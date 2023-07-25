@@ -1,4 +1,4 @@
-## DGB Commerce website
+## DGB Commerce shop
 DGB Commerce is an e-commerce platform by and for Digibyte users. Merchants can manage shops, categories and products and list/sell them for Digibyte prices. Consumers can shop and checkout by paying with Digibyte. This repository contains the web application used for the actual shops, typically ran from a [...].dgbcommerce.com subdomain or a merchant's own domain.
 
 ## Development server
