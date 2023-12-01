@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "shop-dgbcommerce-com:build:production"
+              "buildTarget": "shop-dgbcommerce-com:build:production"
             },
             "development": {
-              "browserTarget": "shop-dgbcommerce-com:build:development"
+              "buildTarget": "shop-dgbcommerce-com:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "shop-dgbcommerce-com:build"
+            "buildTarget": "shop-dgbcommerce-com:build"
           }
         },
         "test": {
