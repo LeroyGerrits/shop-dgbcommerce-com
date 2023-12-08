@@ -1,1 +1,1145 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+
+@font-face {
+    font-display: swap;
+    font-family: 'open_sansregular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('assets/fonts/opensans-regular-webfont.eot');
+    src: url('assets/fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+        url('assets/fonts/opensans-regular-webfont.woff') format('woff'),
+        url('assets/fonts/opensans-regular-webfont.ttf') format('truetype'),
+        url('assets/fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'open_sans_condensedbold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('assets/fonts/opensans-condbold-webfont.eot');
+    src: url('assets/fonts/opensans-condbold-webfont.eot?#iefix') format('embedded-opentype'),
+        url('assets/fonts/opensans-condbold-webfont.woff') format('woff'),
+        url('assets/fonts/opensans-condbold-webfont.ttf') format('truetype'),
+        url('assets/fonts/opensans-condbold-webfont.svg#open_sans_condensedbold') format('svg');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'robotoblack';
+    font-style: normal;
+    font-weight: normal;
+    src: url('assets/fonts/roboto-black-webfont.woff2') format('woff2'),
+        url('assets/fonts/roboto-black-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'robotoblack_italic';
+    font-style: normal;
+    font-weight: normal;
+    src: url('assets/fonts/roboto-blackitalic-webfont.woff2') format('woff2'),
+        url('assets/fonts/roboto-blackitalic-webfont.woff') format('woff');
+}
+
+:root {
+    --error-color: #f55555;
+    --green-color: #15a515;
+    --mdc-dialog-supporting-text-size: 14px;
+    --mat-menu-item-label-text-size: 14px;
+    --mat-option-label-text-size: 14px;
+
+    --font-main: 'open_sansregular', Helvetica, Tahoma !important;
+    --dark-blue-color: #002352;
+    --dark-gray-color: #202020;
+    --light-blue-color: #2080e0;
+    --lighter-blue-color: #3090f0;
+    --lightest-blue-color: #3f9fff;
+    --light-gray-color: #404040;
+    --error-color: #dc3545;
+    --table-header-background-color: #303030;
+    --table-row-background-color: #404040;
+    --table-row-alternating-background-color: #383838;
+}
+
+
+
+$md-dgbcommercepalette-primary: (
+    50 : #e4f0fb,
+    100 : #bcd9f6,
+    200 : #90c0f0,
+    300 : #63a6e9,
+    400 : #4193e5,
+    500 : #2080e0,
+    600 : #1c78dc,
+    700 : #186dd8,
+    800 : #1363d3,
+    900 : #0b50cb,
+    A100 : #f6f9ff,
+    A200 : #c3d6ff,
+    A400 : #90b3ff,
+    A700 : #77a1ff,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$md-dgbcommercepalette-accent: (
+    50 : #e0e5ea,
+    100 : #b3bdcb,
+    200 : #8091a9,
+    300 : #4d6586,
+    400 : #26446c,
+    500 : #002352,
+    600 : #001f4b,
+    700 : #001a41,
+    800 : #001538,
+    900 : #000c28,
+    A100 : #637bff,
+    A200 : #304fff,
+    A400 : #0027fc,
+    A700 : #0023e2,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$my-primary: mat.define-palette($md-dgbcommercepalette-primary, 500);
+$my-accent: mat.define-palette($md-dgbcommercepalette-accent, 500);
+
+$my-theme: mat.define-dark-theme((color: (primary: $my-primary,
+                accent: $my-accent,
+            ),
+            typography: mat.define-typography-config($font-family: 'open_sansregular'),
+            density: 0));
+
+@include mat.all-component-themes($my-theme);
+
+html,
+body {
+    height: 100%;
+}
+
+a {
+    color: #bbf;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    background-color: var(--dark-blue-color);
+    color: #fff;
+    font-family: 'open_sansregular', Helvetica, Tahoma !important;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    display: inline;
+    font-family: 'robotoblack', Helvetica, Tahoma !important;
+    font-weight: normal !important;
+    margin: 0 !important;
+}
+
+p {
+    text-align: justify;
+    line-height: 1.8em;
+    margin: 0 0 1.6em 0 !important;
+}
+
+#TopBar {
+    background-color: var(--dark-blue-color);
+}
+
+#TopBar .mat-toolbar {
+    background-color: transparent;
+}
+
+#TopBar .mat-toolbar-row,
+#TopBar .mat-toolbar-single-row {
+    display: inline;
+    padding: 0;
+}
+
+#TopBar .mdc-button__label {
+    color: #fff;
+}
+
+#TopBar .RightMenu {
+    float: right;
+}
+
+#TopBar button.ToolbarItemCollapsible {
+    display: none;
+}
+
+#Header {
+    background-color: #f00;
+    ;
+}
+
+#Header div.LogoAndNavigation {
+    padding: 40px 0;
+}
+
+#Header div.LogoAndNavigation a#Logo {
+    display: block;
+    float: left;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+#Header div.LogoAndNavigation a#Logo img {
+    border: none;
+    vertical-align: middle;
+}
+
+#Header div.LogoAndNavigation a#Logo span {
+    color: #fff;
+    display: inline-block;
+    font-family: 'robotoblack_italic';
+    font-size: 2em;
+    line-height: 64px;
+    margin-left: 20px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #222;
+}
+
+#Header div.LogoAndNavigation ul {
+    display: block;
+    float: right;
+    list-style-type: none;
+    margin: 0 8px 0 0;
+    padding: 0;
+}
+
+#Header div.LogoAndNavigation ul li {
+    display: inline;
+    line-height: 64px;
+    margin: 0 0 0 40px;
+    padding: 0;
+}
+
+#Header div.LogoAndNavigation ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'open_sans_condensedbold', Helvetica, Tahoma;
+    font-size: 1.4em;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #222;
+    text-transform: uppercase;
+    transition: all .3s ease-in-out;
+}
+
+#Header div.LogoAndNavigation ul li a:hover,
+#Header div.LogoAndNavigation ul li a.Active {
+    color: rgba(255, 255, 255, 1);
+}
+
+#Header div.CallToAction {
+    height: 280px;
+}
+
+#Header div.CallToAction div.Wrapper {
+    margin: 0 auto;
+    width: 630px;
+}
+
+#Header div.CallToAction div.Wrapper img {
+    display: block;
+    float: right;
+    margin-left: 20px;
+}
+
+#Header div.CallToAction div.Wrapper strong {
+    display: block;
+    font-family: 'robotoblack';
+    font-size: 1.6em;
+    padding: 60px 0 20px 0;
+    text-align: center;
+    text-shadow: 1px 1px 0 #222;
+}
+
+#Header div.CallToAction div.Wrapper span.Explanation {
+    color: #e0e0e0;
+    display: block;
+    text-shadow: 1px 1px 0 #222;
+}
+
+#Header div.CallToAction div.Wrapper div.Buttons {
+    display: table;
+    margin: 0 auto;
+    padding-top: 20px;
+    text-align: center;
+}
+
+#Header div.CallToAction div.Wrapper div.Buttons button {
+    margin: 0 10px;
+}
+
+
+#Body {
+    background-color: var(--dark-gray-color);
+    padding: 20px 0;
+}
+
+#Stats div {
+    text-align: center;
+}
+
+#Stats div.CenteredContainer {
+    padding: 20px 0;
+}
+
+#Stats div strong {
+    display: block;
+    font-family: 'robotoblack';
+    font-size: 3em;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#Footer {
+    background-color: var(--dark-gray-color);
+}
+
+#Footer p {
+    color: #b0b0b0;
+    line-height: 1.8em;
+    margin: 10px 0 0 0 !important;
+}
+
+#Footer ul {
+    list-style-type: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+#Footer ul li {
+    color: #b0b0b0;
+    line-height: 1.8em;
+}
+
+#BottomBar {
+    background-color: var(--dark-blue-color);
+    color: #bbb;
+}
+
+#BottomBar ul {
+    float: right;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#BottomBar ul li {
+    background-image: url('assets/images/Sprites.png');
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    margin: 0 0 0 10px;
+    padding: 0;
+}
+
+#BottomBar ul li.Telegram {
+    background-position: 0 0;
+}
+
+#BottomBar ul li.Telegram:hover {
+    background-position: -40px 0;
+}
+
+#BottomBar ul li.X {
+    background-position: 0 -40px;
+}
+
+#BottomBar ul li.X:hover {
+    background-position: -40px -40px;
+}
+
+#BottomBar ul li.GitHub {
+    background-position: 0 -80px;
+}
+
+#BottomBar ul li.GitHub:hover {
+    background-position: -40px -80px;
+}
+
+#BottomBar ul li.Facebook {
+    background-position: 0 -120px;
+}
+
+#BottomBar ul li.Facebook:hover {
+    background-position: -40px -120px;
+}
+
+#BottomBar ul li.LinkedIn {
+    background-position: 0 -160px;
+}
+
+#BottomBar ul li.LinkedIn:hover {
+    background-position: -40px -160px;
+}
+
+#BottomBar ul li a {
+    display: block;
+    height: 40px;
+    width: 40px;
+}
+
+#BottomBar ul li a span {
+    display: none;
+}
+
+#BottomBar span.Copyright {
+    line-height: 40px;
+}
+
+div.CenteredContainer {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+div.CenteredFormButtons {
+    text-align: center;
+    padding-top: 1em;
+}
+
+div.CenteredFormButtons button {
+    margin: 0 10px;
+}
+
+div.ColumnOneSixth {
+    float: left;
+    width: 210px;
+}
+
+div.ColumnOneFifth {
+    float: left;
+    width: 252px;
+}
+
+div.ColumnOneFourth {
+    float: left;
+    width: 315px;
+}
+
+div.ColumnOneThird {
+    float: left;
+    width: 420px;
+}
+
+div.ColumnOneHalf {
+    float: left;
+    width: 630px;
+}
+
+div.ColumnTwoThird {
+    float: left;
+    width: 840px;
+}
+
+div.ColumnThreeFourth {
+    float: left;
+    width: 945px;
+}
+
+div.FormButtons button {
+    margin-left: 15px;
+}
+
+div.InvalidFeedback {
+    margin-top: 0.25rem;
+    font-size: .875em;
+    color: var(--error-color);
+}
+
+div.LighterBlock {
+    background-color: var(--light-gray-color);
+    padding: 20px;
+}
+
+img.PublicWebsiteImage {
+    display: block;
+    margin: 20px auto;
+}
+
+img.PublicWebsiteImageStretch {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+div.WrapperPadding0-8 {
+    padding: 0 8px;
+}
+
+div.WrapperPadding10 {
+    padding: 10px;
+}
+
+div.WrapperPadding10-8-10-10 {
+    padding: 10px 8px 10px 10px;
+}
+
+div.WrapperPadding10-10-0-8 {
+    padding: 10px 10px 0 8px;
+}
+
+div.WrapperPadding20 {
+    padding: 20px;
+}
+
+div.WrapperPadding20-8 {
+    padding: 20px 8px;
+}
+
+div.WrapperPadding20-10 {
+    padding: 20px 10px;
+}
+
+div.WrapperPadding20-20-0-20 {
+    padding: 20px 20px 0 20px;
+}
+
+div.WrapperPadding20-20-0-8 {
+    padding: 20px 20px 0 8px;
+}
+
+div.WrapperPadding20-20-20-8 {
+    padding: 20px 20px 20px 8px;
+}
+
+div.WrapperPadding20-10-0-8 {
+    padding: 20px 10px 0 8px;
+}
+
+div.WrapperPadding20-10-0-10 {
+    padding: 20px 10px 0 10px;
+}
+
+div.WrapperPadding20-10-20-10 {
+    padding: 20px 10px 20px 10px;
+}
+
+div.WrapperPadding20-10-20-10 {
+    padding: 20px 10px 20px 10px;
+}
+
+div.WrapperPadding20-10-20-8 {
+    padding: 20px 10px 20px 8px;
+}
+
+div.WrapperPadding20-8 {
+    padding: 20px 8px;
+}
+
+div.WrapperPadding20-8-0-10 {
+    padding: 20px 8px 0 10px;
+}
+
+div.WrapperPadding20-8-0-20 {
+    padding: 20px 8px 0 20px;
+}
+
+div.WrapperPadding20-8-0-8 {
+    padding: 20px 8px 0 8px;
+}
+
+div.WrapperPadding20-8-20-10 {
+    padding: 20px 8px 20px 10px;
+}
+
+div.WrapperPadding20-8-20-20 {
+    padding: 20px 8px 20px 20px;
+}
+
+div.WrapperPadding20-9-0-9 {
+    padding: 20px 9px 0 9px;
+}
+
+div.WrapperPadding8 {
+    padding: 8px;
+}
+
+td.NoDataCell {
+    line-height: 50px;
+    text-align: center;
+}
+
+.CanvasImageStretch canvas {
+    height: auto !important;
+    width: 100% !important;
+}
+
+.CellCountry img {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.Clear {
+    clear: both;
+}
+
+.ClearBoth {
+    clear: both;
+}
+
+.ClearLeft {
+    clear: left;
+}
+
+.ClearRight {
+    clear: right;
+}
+
+.ColorGold {
+    color: #ffaa00;
+}
+
+.ClearRight {
+    clear: right;
+}
+
+.DisplayBlock {
+    display: block;
+}
+
+.DisplayInlineBlock {
+    display: inline-block;
+}
+
+.DisplayNone {
+    display: none;
+}
+
+.FloatRight {
+    float: right;
+}
+
+.FontSize0x8Em {
+    font-size: 0.8em;
+}
+
+.PaddingLeft40 {
+    padding-left: 40px;
+}
+
+.MaxWidth440 {
+    max-width: 440px;
+}
+
+.TabWarnIcon {
+    margin-right: 10px;
+}
+
+.TextAlignCenter {
+    text-align: center;
+}
+
+.TextAlignRight {
+    text-align: right !important;
+}
+
+.TextDecorationLineThrough {
+    text-decoration: line-through;
+}
+
+.TextDecorationUnderline {
+    text-decoration: underline;
+}
+
+.TextError {
+    color: var(--error-color);
+    font-size: 12px;
+}
+
+.TextTransformLowerCase {
+    text-transform: lowercase !important;
+}
+
+.VerticalAlignMiddle {
+    vertical-align: middle;
+}
+
+.WarningBlock {
+    background-color: #402020;
+    border: solid 1px var(--error-color);
+    color: var(--error-color);
+    display: block;
+    padding: 10px;
+    text-align: center;
+}
+
+.WordWrapBreakWord {
+    word-wrap: break-word;
+}
+
+/* Angular Material overrides */
+
+.mdc-button {
+    letter-spacing: 0 !important;
+}
+
+.mat-mdc-menu-content,
+.mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
+    font-size: 14px;
+    letter-spacing: 0 !important;
+}
+
+.mdc-card__actions {
+    padding: 16px !important;
+}
+
+.mat-column-ActionButtons {
+    text-align: right !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__content {
+    font-size: 14px !important;
+}
+
+.mat-mdc-icon-button.mat-primary {
+    color: var(--lightest-blue-color) !important;
+}
+
+.mdc-list-item__primary-text img {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+    color: var(--lightest-blue-color) !important;
+}
+
+.mat-mdc-snack-bar-container {
+    &.error-snackbar {
+        --mat-snack-bar-button-color: #fff;
+        --mdc-snackbar-container-color: #222;
+        --mdc-snackbar-supporting-text-color: #dc3545 !important;
+    }
+}
+
+table.mat-mdc-table tr.mat-mdc-header-row,
+.mat-mdc-paginator {
+    background-color: var(--table-header-background-color) !important;
+}
+
+table.mat-mdc-table tbody tr:nth-child(odd) {
+    background-color: var(--table-row-background-color);
+}
+
+table.mat-mdc-table tbody tr:nth-child(even) {
+    background-color: var(--table-row-alternating-background-color);
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: var(--lightest-blue-color) !important;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.mat-tree {
+    background-color: transparent !important;
+}
+
+.tree ul,
+.tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+.tree .mat-nested-tree-node div[role=group] {
+    padding-left: 40px;
+}
+
+/* Responsiveness */
+
+@media all and (max-width: 1000px) {
+    #TopBar button.ToolbarItemCollapsible {
+        display: inline-flex;
+    }
+
+    #TopBar button.ToolbarItemNonCollapsible {
+        display: none;
+    }
+
+    #Header div.LogoAndNavigation a#Logo {
+        float: none;
+        margin: 0;
+        text-align: center;
+    }
+
+    #Header div.LogoAndNavigation ul {
+        float: none;
+        list-style-type: none;
+        margin: 0;
+    }
+
+    #Header div.LogoAndNavigation ul li {
+        display: block;
+        line-height: 2em;
+        margin: 0;
+        text-align: center;
+    }
+
+    #Header div.CallToAction {
+        height: auto;
+    }
+
+    #Header div.CallToAction div.Wrapper {
+        text-align: center;
+        padding: 20px 0;
+        width: auto;
+    }
+
+    #Header div.CallToAction div.Wrapper img {
+        display: none;
+    }
+
+    #Header div.CallToAction div.Wrapper strong {
+        padding: 0 0 10px 0;
+    }
+
+    #Header div.CallToAction div.Wrapper span.Explanation {
+        color: #e0e0e0;
+        display: block;
+        text-shadow: 1px 1px 0 #222;
+    }
+
+    #Header div.CallToAction div.Wrapper div.Buttons {
+        display: table;
+        margin: 0 auto;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    #Header div.CallToAction div.Wrapper div.Buttons button {
+        margin: 0 10px;
+    }
+
+    div.CenteredContainer {
+        padding: 0 20px;
+        width: auto;
+    }
+
+    div.ColumnOneSixth,
+    div.ColumnOneFifth,
+    div.ColumnOneFourth,
+    div.ColumnOneThird,
+    div.ColumnOneHalf,
+    div.ColumnTwoThird,
+    div.ColumnThreeFourth {
+        float: none;
+        width: auto;
+    }
+
+    div.WrapperPadding0-8,
+    div.WrapperPadding10,
+    div.WrapperPadding10-8-10-10,
+    div.WrapperPadding10-10-0-8,
+    div.WrapperPadding20,
+    div.WrapperPadding20-8,
+    div.WrapperPadding20-10,
+    div.WrapperPadding20-20-0-20,
+    div.WrapperPadding20-20-0-8,
+    div.WrapperPadding20-20-20-8,
+    div.WrapperPadding20-10-0-8,
+    div.WrapperPadding20-10-0-10,
+    div.WrapperPadding20-10-20-10,
+    div.WrapperPadding20-10-20-10,
+    div.WrapperPadding20-10-20-8,
+    div.WrapperPadding20-8,
+    div.WrapperPadding20-8-0-10,
+    div.WrapperPadding20-8-0-20,
+    div.WrapperPadding20-8-0-8,
+    div.WrapperPadding20-8-20-10,
+    div.WrapperPadding20-8-20-20,
+    div.WrapperPadding20-9-0-9 {
+        padding: 20px 0 0 0;
+    }
+}
+
+@media all and (min-width: 1000px) and (max-width: 1300px) {
+    div.CenteredContainer {
+        width: 960px;
+    }
+
+    div.ColumnOneSixth {
+        float: left;
+        width: 160px;
+    }
+
+    div.ColumnOneFifth {
+        float: left;
+        width: 192px;
+    }
+
+    div.ColumnOneFourth {
+        float: left;
+        width: 240px;
+    }
+
+    div.ColumnOneThird {
+        float: left;
+        width: 320px;
+    }
+
+    div.ColumnOneHalf {
+        float: left;
+        width: 480px;
+    }
+
+    div.ColumnTwoThird {
+        float: left;
+        width: 640px;
+    }
+
+    div.ColumnThreeFourth {
+        float: left;
+        width: 720px;
+    }
+}
+
+/* Lightbox */
+
+body.lb-disable-scrolling {
+    overflow: hidden;
+}
+
+.lightboxOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background-color: black;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    opacity: 0.8;
+    display: none;
+}
+
+.lightbox {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    text-align: center;
+    line-height: 0;
+    font-weight: normal;
+    outline: none;
+}
+
+.lightbox .lb-image {
+    display: block;
+    height: auto;
+    max-width: inherit;
+    max-height: none;
+    border-radius: 3px;
+
+    /* Image border */
+    border: 4px solid var(--dark-gray-color);
+}
+
+.lightbox a img {
+    border: none;
+}
+
+.lb-outerContainer {
+    position: relative;
+    zoom: 100%;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 4px;
+
+    /* Background color behind image.
+     This is visible during transitions. */
+    background-color: var(--dark-gray-color);
+}
+
+.lb-outerContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.lb-loader {
+    position: absolute;
+    top: 43%;
+    left: 0;
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+}
+
+.lb-cancel {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background: url(assets/images/lightbox/loading.gif) no-repeat;
+}
+
+.lb-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+.lb-container>.nav {
+    left: 0;
+}
+
+.lb-nav a {
+    outline: none;
+    background-image: url('data:image/gif;base64,R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
+}
+
+.lb-prev,
+.lb-next {
+    height: 100%;
+    cursor: pointer;
+    display: block;
+}
+
+.lb-nav a.lb-prev {
+    width: 34%;
+    left: 0;
+    float: left;
+    background: url(assets/images/lightbox/prev.png) left 48% no-repeat;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity 0.6s;
+    -moz-transition: opacity 0.6s;
+    -o-transition: opacity 0.6s;
+    transition: opacity 0.6s;
+}
+
+.lb-nav a.lb-prev:hover {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+}
+
+.lb-nav a.lb-next {
+    width: 64%;
+    right: 0;
+    float: right;
+    background: url(assets/images/lightbox/next.png) right 48% no-repeat;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity 0.6s;
+    -moz-transition: opacity 0.6s;
+    -o-transition: opacity 0.6s;
+    transition: opacity 0.6s;
+}
+
+.lb-nav a.lb-next:hover {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+}
+
+.lb-dataContainer {
+    margin: 0 auto;
+    padding-top: 5px;
+    zoom: 100%;
+    width: 100%;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.lb-dataContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.lb-data {
+    padding: 0 4px;
+    color: #ccc;
+}
+
+.lb-data .lb-details {
+    width: 85%;
+    float: left;
+    text-align: left;
+    line-height: 1.1em;
+}
+
+.lb-data .lb-caption {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1em;
+}
+
+.lb-data .lb-caption a {
+    color: #4ae;
+}
+
+.lb-data .lb-number {
+    display: block;
+    clear: left;
+    padding-bottom: 1em;
+    font-size: 12px;
+    color: #999999;
+}
+
+.lb-data .lb-close {
+    display: block;
+    float: right;
+    width: 30px;
+    height: 30px;
+    background: url(assets/images/lightbox/close.png) top right no-repeat;
+    text-align: right;
+    outline: none;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+    opacity: 0.7;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+}
+
+.lb-data .lb-close:hover {
+    cursor: pointer;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+}
