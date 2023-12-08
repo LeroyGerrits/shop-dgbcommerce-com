@@ -1,14 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
+
 export class AppComponent implements OnInit {
-  title = 'shop-dgbcommerce-com';
+  public currentYear: number = new Date().getFullYear();
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // Determine shop here
+    const domain = window.location.host;
+    console.log('domain');
+    console.log(domain)
+  }
+
+  login() {
+
+  }
+
+  logout() {
+
+  }
+
+  signUp() {
+
   }
 }
