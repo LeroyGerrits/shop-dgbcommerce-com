@@ -15,6 +15,10 @@
           <mat-icon>account_box</mat-icon>
           USERNAME
         </button>
+        <button *ngIf="true" mat-button [routerLink]="['/shopping-cart']">
+          <mat-icon matBadge="12" matBadgePosition="below before">shopping_cart</mat-icon>
+          Shopping cart
+        </button>
 
         <mat-menu #Merchant="matMenu">
           <button mat-menu-item [routerLink]="['/account/settings']">Settings</button>
@@ -25,66 +29,45 @@
     </div>
 
     <mat-toolbar>
+      <button mat-button [routerLink]="['/']">
+        <mat-icon class="Margin0">home</mat-icon>
+      </button>
+      <ng-container *ngFor="let category of this.categories">
+        <ng-container *ngIf="category.Children">
+          <button mat-button class="ToolbarItemNonCollapsible" [matMenuTriggerFor]="menu.buildMenu">
+            {{category.Name}} #3
+          </button>
+          <app-menu-item #menu [categories]="category.Children"></app-menu-item>
+        </ng-container>
+        <ng-container *ngIf="!category.Children">
+          <button mat-button class="ToolbarItemNonCollapsible" [routerLink]="['/category/' + category.Id + '/' + this.searchEngineFriendlyStringPipe.transform(category.Name)]">
+            {{category.Name}} #4
+          </button>
+        </ng-container>
+      </ng-container>
+
       <button mat-button [matMenuTriggerFor]="ControlPanel" class="ToolbarItemCollapsible">
         <mat-icon>menu</mat-icon>
-        Control panel
-      </button>
-      <button mat-button class="ToolbarItemNonCollapsible" [routerLink]="['/']">
-        <mat-icon>arrow_circle_left</mat-icon> Website
-      </button>
-      <button mat-button class="ToolbarItemNonCollapsible" [routerLink]="['/control-panel']">
-        <mat-icon>dashboard</mat-icon> Dashboard
-      </button>
-      <button mat-button class="ToolbarItemNonCollapsible" [matMenuTriggerFor]="ControlPanelConfiguration">
-        <mat-icon>settings</mat-icon> Configuration
-      </button>
-      <button mat-button class="ToolbarItemNonCollapsible" [matMenuTriggerFor]="ControlPanelCatalog">
-        <mat-icon>inventory</mat-icon> Catalog
-      </button>
-      <button mat-button class="ToolbarItemNonCollapsible" [routerLink]="['/control-panel/customers']">
-        <mat-icon>person</mat-icon> Customers
-      </button>
-      <button mat-button class="ToolbarItemNonCollapsible" [matMenuTriggerFor]="ControlPanelSales">
-        <mat-icon>attach_money</mat-icon> Sales
+        Categories
       </button>
 
       <mat-menu #ControlPanel="matMenu">
-        <button mat-menu-item [routerLink]="['/']">
-          <mat-icon>arrow_circle_left</mat-icon> Back to website
-        </button>
-        <button mat-menu-item [routerLink]="['/control-panel']">
-          <mat-icon>dashboard</mat-icon> Dashboard
-        </button>
-        <button mat-menu-item [matMenuTriggerFor]="ControlPanelConfiguration">
-          <mat-icon>settings</mat-icon> Configuration
-        </button>
-        <button mat-menu-item [matMenuTriggerFor]="ControlPanelCatalog">
-          <mat-icon>inventory</mat-icon> Catalog
-        </button>
-        <button mat-menu-item [routerLink]="['/control-panel/customers']">
-          <mat-icon>person</mat-icon> Customers
-        </button>
-        <button mat-menu-item [matMenuTriggerFor]="ControlPanelSales">
-          <mat-icon>attach_money</mat-icon> Sales
-        </button>
-      </mat-menu>
-
-      <mat-menu #ControlPanelConfiguration="matMenu">
-        <button mat-menu-item [routerLink]="['/control-panel/configuration/delivery-methods']">Delivery methods</button>
-        <button mat-menu-item [routerLink]="['/control-panel/configuration/digibyte-wallets']">DigiByte wallets</button>
-        <button mat-menu-item [routerLink]="['/control-panel/configuration/shops']">Shops</button>
-      </mat-menu>
-
-      <mat-menu #ControlPanelCatalog="matMenu">
-        <button mat-menu-item [routerLink]="['/control-panel/catalog/categories']">Categories</button>
-        <button mat-menu-item [routerLink]="['/control-panel/catalog/products']">Products</button>
-      </mat-menu>
-
-      <mat-menu #ControlPanelSales="matMenu">
-        <button mat-menu-item [routerLink]="['/control-panel/sales/orders']">Orders</button>
-        <button mat-menu-item [routerLink]="['/control-panel/sales/transactions']">Transactions</button>
+        <ng-container *ngFor="let category of this.categories">
+          <ng-container *ngIf="category.Children">
+            <button mat-menu-item [matMenuTriggerFor]="menu.buildMenu">
+              {{category.Name}}
+            </button>
+            <app-menu-item #menu [categories]="category.Children"></app-menu-item>
+          </ng-container>
+          <ng-container *ngIf="!category.Children">
+            <button mat-menu-item [routerLink]="['/category/' + category.Id + '/' + this.searchEngineFriendlyStringPipe.transform(category.Name)]">
+              {{category.Name}}
+            </button>
+          </ng-container>
+        </ng-container>
       </mat-menu>
     </mat-toolbar>
+
     <div class="ClearRight"></div>
   </div>
 </div>
@@ -92,15 +75,7 @@
 <div id="BottomBar">
   <div class="CenteredContainer">
     <div class="WrapperPadding20-8">
-      <ul>
-        <li class="Telegram"><a href="https://t.me/DGBCommerceAnnouncements" target="_blank" title="Telegram"><span>Telegram</span></a></li>
-        <li class="X"><a href="https://www.x.com/DGBCommerce" target="_blank" title="X"><span>X</span></a></li>
-        <li class="Facebook"><a href="https://www.facebook.com/dgbcommerce" target="_blank" title="Facebook"><span>Facebook</span></a></li>
-        <li class="LinkedIn"><a href="https://www.linkedin.com/company/dgbcommerce" target="_blank" title="LinkedIn"><span>LinkedIn</span></a></li>
-        <li class="GitHub"><a href="https://github.com/LeroyGerrits" target="_blank" title="GitHub"><span>GitHub</span></a></li>
-      </ul>
-      <span class="Copyright">&copy; DGB Commerce {{this.currentYear}} | <a [routerLink]="['financial-statement']">Financial statement</a> | <a [routerLink]="['node-status']">Node status</a></span>
-      <div class="ClearRight"></div>
+      Powered by <a href="">DGB Commerce</a>
     </div>
   </div>
 </div>

@@ -43,11 +43,17 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { MenuItemComponent } from './shared/components/menu-item/menu-item.component';
 import { MerchantPasswordResetLinkService } from './shared/services/MerchantPasswordResetLink.service';
 import { MerchantService } from './shared/services/Merchant.service';
 import { NgModule } from '@angular/core';
 import { ProductPhotoService } from './shared/services/ProductPhoto.service';
 import { ProductService } from './shared/services/Product.service';
+import { PublicWebsiteAboutComponent } from './public-website/about/about.component';
+import { PublicWebsiteComponent } from './public-website/public-website.component';
+import { PublicWebsiteIndexComponent } from './public-website/index/index.component';
+import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-authorized/not-authorized.component';
+import { PublicWebsiteNotFoundComponent } from './public-website/not-found/not-found.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { RouterModule } from '@angular/router';
 import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
@@ -59,6 +65,12 @@ import { StripHtmlPipe } from './shared/pipes/StripHtml.pipe';
   declarations: [
     AppComponent,
     FileSizePipe,
+    MenuItemComponent,
+    PublicWebsiteComponent,
+    PublicWebsiteAboutComponent,
+    PublicWebsiteIndexComponent,
+    PublicWebsiteNotAuthorizedComponent,
+    PublicWebsiteNotFoundComponent,
     SearchEngineFriendlyStringPipe
   ],
   imports: [
@@ -114,6 +126,7 @@ import { StripHtmlPipe } from './shared/pipes/StripHtml.pipe';
     MerchantPasswordResetLinkService,
     ProductService,
     ProductPhotoService,
+    SearchEngineFriendlyStringPipe,
     ShopService,
     ShopCategoryService,
     StripHtmlPipe

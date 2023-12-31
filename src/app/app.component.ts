@@ -1,7 +1,11 @@
 import { Component, OnInit, Output } from '@angular/core';
 
+import { CategoryService } from './shared/services/Category.service';
+import { Constants } from './shared/Constants';
 import { MatDialog } from '@angular/material/dialog';
+import { PublicCategory } from './shared/models/viewmodels/PublicCategory.model';
 import { PublicShop } from './shared/models/viewmodels/PublicShop.model';
+import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
 import { ShopService } from './shared/services/Shop.service';
 
 @Component({
@@ -10,25 +14,30 @@ import { ShopService } from './shared/services/Shop.service';
 })
 
 export class AppComponent implements OnInit {
-  @Output() activeShop: PublicShop | undefined;
+  @Output() shop: PublicShop | undefined;
+  @Output() categories: PublicCategory[] = [];
 
+  constants = Constants;
   public currentYear: number = new Date().getFullYear();
 
   constructor(
     private dialog: MatDialog,
+    private categoryService: CategoryService,
+    public searchEngineFriendlyStringPipe: SearchEngineFriendlyStringPipe,
     private shopService: ShopService
   ) { }
 
   ngOnInit(): void {
-    const domain = window.location.host;
-    const subDomain = domain.replace('.dg', '');
+    const domain = window.location.hostname;
+    const subDomain = domain.replace(`.${this.constants.DGB_COMMERCE_DOMAIN}`, '');
 
-    this.shopService.getBySubdomainPublic(subDomain).subscribe(shop => this.activeShop = shop);
+    this.shopService.getBySubdomainPublic(subDomain).subscribe(shop => {
+      this.shop = shop;
 
-    console.log('domain');
-    console.log(domain)
-    console.log('window.location');
-    console.log(window.location)
+      this.categoryService.getByShopIdPublic(shop.Id).subscribe(categories => {
+        this.categories = categories;
+      });
+    });
   }
 
   login() {
