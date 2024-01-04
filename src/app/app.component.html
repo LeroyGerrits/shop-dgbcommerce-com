@@ -71,11 +71,16 @@
     <div class="ClearRight"></div>
   </div>
 </div>
+<div id="Header">
+  <div class="CenteredContainer">
+    <span>{{shop?.Name}}</span>
+  </div>
+</div>
 <router-outlet></router-outlet>
 <div id="BottomBar">
   <div class="CenteredContainer">
     <div class="WrapperPadding20-8">
-      Powered by <a href="">DGB Commerce</a>
+      Powered by <a href="{{constants.DGB_COMMERCE_URL}}" target="_blank"><img src="/assets/images/BottomBar Logo.png" width="23" height="32" alt="DGB Commerce" /> DGB Commerce</a>
     </div>
   </div>
 </div>

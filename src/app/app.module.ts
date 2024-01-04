@@ -60,6 +60,7 @@ import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFrien
 import { ShopCategoryService } from './shared/services/ShopCategory.service';
 import { ShopService } from './shared/services/Shop.service';
 import { StripHtmlPipe } from './shared/pipes/StripHtml.pipe';
+import { UtilityService } from './shared/services/Utility.service';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { StripHtmlPipe } from './shared/pipes/StripHtml.pipe';
     SearchEngineFriendlyStringPipe,
     ShopService,
     ShopCategoryService,
-    StripHtmlPipe
+    StripHtmlPipe,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })

@@ -204,130 +204,23 @@ p {
 }
 
 #Header {
-    background-color: #f00;
-    ;
+    background-color: var(--light-blue-color);
 }
 
-#Header div.LogoAndNavigation {
-    padding: 40px 0;
-}
-
-#Header div.LogoAndNavigation a#Logo {
-    display: block;
-    float: left;
-    margin-left: 8px;
-    white-space: nowrap;
-}
-
-#Header div.LogoAndNavigation a#Logo img {
-    border: none;
-    vertical-align: middle;
-}
-
-#Header div.LogoAndNavigation a#Logo span {
+#Header span {
     color: #fff;
-    display: inline-block;
+    display: block;
     font-family: 'robotoblack_italic';
     font-size: 2em;
     line-height: 64px;
-    margin-left: 20px;
+    text-align: center;
     text-decoration: none;
     text-shadow: 1px 1px 0 #222;
 }
-
-#Header div.LogoAndNavigation ul {
-    display: block;
-    float: right;
-    list-style-type: none;
-    margin: 0 8px 0 0;
-    padding: 0;
-}
-
-#Header div.LogoAndNavigation ul li {
-    display: inline;
-    line-height: 64px;
-    margin: 0 0 0 40px;
-    padding: 0;
-}
-
-#Header div.LogoAndNavigation ul li a {
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'open_sans_condensedbold', Helvetica, Tahoma;
-    font-size: 1.4em;
-    text-decoration: none;
-    text-shadow: 1px 1px 0 #222;
-    text-transform: uppercase;
-    transition: all .3s ease-in-out;
-}
-
-#Header div.LogoAndNavigation ul li a:hover,
-#Header div.LogoAndNavigation ul li a.Active {
-    color: rgba(255, 255, 255, 1);
-}
-
-#Header div.CallToAction {
-    height: 280px;
-}
-
-#Header div.CallToAction div.Wrapper {
-    margin: 0 auto;
-    width: 630px;
-}
-
-#Header div.CallToAction div.Wrapper img {
-    display: block;
-    float: right;
-    margin-left: 20px;
-}
-
-#Header div.CallToAction div.Wrapper strong {
-    display: block;
-    font-family: 'robotoblack';
-    font-size: 1.6em;
-    padding: 60px 0 20px 0;
-    text-align: center;
-    text-shadow: 1px 1px 0 #222;
-}
-
-#Header div.CallToAction div.Wrapper span.Explanation {
-    color: #e0e0e0;
-    display: block;
-    text-shadow: 1px 1px 0 #222;
-}
-
-#Header div.CallToAction div.Wrapper div.Buttons {
-    display: table;
-    margin: 0 auto;
-    padding-top: 20px;
-    text-align: center;
-}
-
-#Header div.CallToAction div.Wrapper div.Buttons button {
-    margin: 0 10px;
-}
-
 
 #Body {
     background-color: var(--dark-gray-color);
     padding: 20px 0;
-}
-
-#Stats div {
-    text-align: center;
-}
-
-#Stats div.CenteredContainer {
-    padding: 20px 0;
-}
-
-#Stats div strong {
-    display: block;
-    font-family: 'robotoblack';
-    font-size: 3em;
-    font-weight: bold;
-    line-height: 1em;
-    margin-bottom: 10px;
-    text-align: center;
 }
 
 #Footer {
@@ -356,74 +249,16 @@ p {
     color: #bbb;
 }
 
-#BottomBar ul {
-    float: right;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+#BottomBar img {
+    border: none;
+    vertical-align: middle;
 }
 
-#BottomBar ul li {
-    background-image: url('assets/images/Sprites.png');
-    background-repeat: no-repeat;
-    display: block;
-    float: left;
-    margin: 0 0 0 10px;
-    padding: 0;
-}
-
-#BottomBar ul li.Telegram {
-    background-position: 0 0;
-}
-
-#BottomBar ul li.Telegram:hover {
-    background-position: -40px 0;
-}
-
-#BottomBar ul li.X {
-    background-position: 0 -40px;
-}
-
-#BottomBar ul li.X:hover {
-    background-position: -40px -40px;
-}
-
-#BottomBar ul li.GitHub {
-    background-position: 0 -80px;
-}
-
-#BottomBar ul li.GitHub:hover {
-    background-position: -40px -80px;
-}
-
-#BottomBar ul li.Facebook {
-    background-position: 0 -120px;
-}
-
-#BottomBar ul li.Facebook:hover {
-    background-position: -40px -120px;
-}
-
-#BottomBar ul li.LinkedIn {
-    background-position: 0 -160px;
-}
-
-#BottomBar ul li.LinkedIn:hover {
-    background-position: -40px -160px;
-}
-
-#BottomBar ul li a {
-    display: block;
-    height: 40px;
-    width: 40px;
-}
-
-#BottomBar ul li a span {
-    display: none;
-}
-
-#BottomBar span.Copyright {
-    line-height: 40px;
+#BottomBar a {
+    color: #fff;
+    font-family: 'robotoblack_italic';
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #222;
 }
 
 div.CenteredContainer {
