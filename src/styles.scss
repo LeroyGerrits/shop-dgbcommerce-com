@@ -203,6 +203,16 @@ p {
     display: none;
 }
 
+#TopBar button span.Amount {
+    background-color: var(--light-blue-color);
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: bold;
+    line-height: normal;
+    padding: 3px;
+}
+
 #Header {
     background-color: var(--light-blue-color);
 }

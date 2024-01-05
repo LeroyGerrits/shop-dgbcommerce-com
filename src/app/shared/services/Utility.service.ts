@@ -5,6 +5,6 @@ import { PublicShop } from '../models/viewmodels/PublicShop.model';
 
 @Injectable()
 export class UtilityService {
-    public categories: Observable<PublicCategory[]> | undefined;
-    public shop: Observable<PublicShop> | undefined;
+    public categories: PublicCategory[] | undefined;
+    public shop: PublicShop | undefined;
 }

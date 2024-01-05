@@ -1,23 +1,23 @@
 <div id="TopBar">
   <div class="CenteredContainer">
     <div class="RightMenu">
-      <mat-toolbar>
-        <button *ngIf="!true" mat-button (click)="signUp()">
+      <mat-toolbar *ngIf="this.shop">
+        <button *ngIf="!this.activeCustomer" mat-button (click)="signUp()">
           <mat-icon>account_box</mat-icon>
           Sign up
         </button>
-        <button *ngIf="!true" mat-button (click)="login()">
+        <button *ngIf="!this.activeCustomer" mat-button (click)="login()">
           <mat-icon>login</mat-icon>
-          Merchant login
+          Customer login
         </button>
 
-        <button *ngIf="true" mat-button [matMenuTriggerFor]="Merchant">
+        <button *ngIf="this.activeCustomer" mat-button [matMenuTriggerFor]="Merchant">
           <mat-icon>account_box</mat-icon>
           USERNAME
         </button>
-        <button *ngIf="true" mat-button [routerLink]="['/shopping-cart']">
-          <mat-icon matBadge="12" matBadgePosition="below before">shopping_cart</mat-icon>
+        <button mat-button [routerLink]="['/shopping-cart']">
           Shopping cart
+          <span class="Amount">12</span>
         </button>
 
         <mat-menu #Merchant="matMenu">
