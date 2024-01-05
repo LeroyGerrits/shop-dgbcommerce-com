@@ -35,13 +35,13 @@
       <ng-container *ngFor="let category of this.categories">
         <ng-container *ngIf="category.Children">
           <button mat-button class="ToolbarItemNonCollapsible" [matMenuTriggerFor]="menu.buildMenu">
-            {{category.Name}} #3
+            {{category.Name}}
           </button>
           <app-menu-item #menu [categories]="category.Children"></app-menu-item>
         </ng-container>
         <ng-container *ngIf="!category.Children">
           <button mat-button class="ToolbarItemNonCollapsible" [routerLink]="['/category/' + category.Id + '/' + this.searchEngineFriendlyStringPipe.transform(category.Name)]">
-            {{category.Name}} #4
+            {{category.Name}}
           </button>
         </ng-container>
       </ng-container>
