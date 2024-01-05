@@ -1,11 +1,11 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
+import { Observable, of } from 'rxjs';
 
 import { CategoryService } from './shared/services/Category.service';
 import { Constants } from './shared/Constants';
 import { Customer } from './shared/models/Customer.model';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { PublicCategory } from './shared/models/viewmodels/PublicCategory.model';
 import { PublicShop } from './shared/models/viewmodels/PublicShop.model';
 import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
 
   onRetrieveShop(shop: PublicShop) {
     this.shop = shop;
-    this.utilityService.shop = shop;
+    this.utilityService.setShop(shop);
 
     this.categoryService.getByShopIdPublic(shop.Id).subscribe({
       next: categories => this.onRetrieveCategories(categories),
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
 
   onRetrieveCategories(categories: PublicCategory[]) {
     this.categories = categories;
-    this.utilityService.categories = categories;
+    this.utilityService.setCategories(categories);
   }
 
   login() {

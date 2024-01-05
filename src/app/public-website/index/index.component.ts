@@ -21,10 +21,10 @@ export class PublicWebsiteIndexComponent implements OnInit {
     private utilityService: UtilityService) { }
 
   ngOnInit() {
-    if (this.utilityService.shop) {
-      this.shop = this.utilityService.shop;
-      this.metaService.addTag({ name: 'keywords', content: this.utilityService.shop.Name });
-      this.titleService.setTitle(`${this.utilityService.shop.Name} - Home`);
-    }
+    this.utilityService.activeShop$.subscribe(shop => {
+      this.shop = shop;
+      this.metaService.addTag({ name: 'keywords', content: shop.Name });
+      this.titleService.setTitle(`${shop.Name} - Home`);
+    });
   }
 }
