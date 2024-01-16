@@ -1,11 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Environment } from 'src/app/shared/environments/Environment';
-import { GetProductResponse } from '../models/response/GetProductResponse.model';
 import { GetProductsParameters } from '../models/parameters/GetProductsParameters.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from 'src/app/shared/models/Product.model';
+import { PublicProduct } from '../models/viewmodels/PublicProduct.model';
 
 @Injectable()
 export class ProductService {
@@ -13,18 +12,21 @@ export class ProductService {
 
     constructor(protected http: HttpClient) { }
 
-    getList(parameters?: GetProductsParameters): Observable<Product[]> {
+    getList(parameters?: GetProductsParameters): Observable<PublicProduct[]> {
         let httpParams = new HttpParams();
 
         if (parameters) {
             if (parameters.Name) httpParams = httpParams.append('name', parameters.Name);
             if (parameters.ShopId) httpParams = httpParams.append('shopId', parameters.ShopId);
+            if (parameters.CategoryId) httpParams = httpParams.append('categoryId', parameters.CategoryId);
+            if (parameters.Visible != null) httpParams = httpParams.append('visible', parameters.Visible);
+            if (parameters.ShowOnHome != null) httpParams = httpParams.append('showOnHome', parameters.ShowOnHome);
         }
 
-        return this.http.get<Product[]>(this.apiUrl, { params: httpParams });
+        return this.http.get<PublicProduct[]>(this.apiUrl, { params: httpParams });
     }
 
-    getById(id: string): Observable<GetProductResponse> {
-        return this.http.get<GetProductResponse>(`${this.apiUrl}/${id}`);
+    getById(id: string): Observable<PublicProduct> {
+        return this.http.get<PublicProduct>(`${this.apiUrl}/${id}`);
     }
 }
