@@ -2,3 +2,5 @@
     <span *ngIf="this.shop">This shop belongs to {{this.shop.MerchantUsername}}</span>
     <span *ngIf="!this.shop">This subdomain has not yet been claimed.<br />Sign up for a free account at <a href="{{constants.DGB_COMMERCE_URL}}" target="_blank">{{constants.DGB_COMMERCE_DOMAIN}}</a> and claim your shop and subdomain for free.</span>
 </div>
+
+<app-product-list [merchantId]="this.shop!.MerchantId" [products]="this.products" />

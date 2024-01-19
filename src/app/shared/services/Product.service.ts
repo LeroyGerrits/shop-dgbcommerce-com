@@ -8,7 +8,7 @@ import { PublicProduct } from '../models/viewmodels/PublicProduct.model';
 
 @Injectable()
 export class ProductService {
-    private apiUrl = Environment.API_URL + '/Product';
+    private apiUrl = Environment.API_URL + '/Product/public';
 
     constructor(protected http: HttpClient) { }
 
@@ -19,7 +19,6 @@ export class ProductService {
             if (parameters.Name) httpParams = httpParams.append('name', parameters.Name);
             if (parameters.ShopId) httpParams = httpParams.append('shopId', parameters.ShopId);
             if (parameters.CategoryId) httpParams = httpParams.append('categoryId', parameters.CategoryId);
-            if (parameters.Visible != null) httpParams = httpParams.append('visible', parameters.Visible);
             if (parameters.ShowOnHome != null) httpParams = httpParams.append('showOnHome', parameters.ShowOnHome);
         }
 

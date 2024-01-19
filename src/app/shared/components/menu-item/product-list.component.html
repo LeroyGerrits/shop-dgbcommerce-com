@@ -1,0 +1,6 @@
+<div [ngClass]="{ 'ColumnOneThird': true, 'ClearLeft': (i % 3 == 0) }" *ngFor="let product of this.products; let i = index">
+    <div [ngClass]="{ 'WrapperPadding20-10-0-8': (i % 3 == 0), 'WrapperPadding20-10-0-10': ((i - 1) % 3 == 0), 'WrapperPadding20-8-0-10': ((i - 2) % 3 == 0) }">
+        <app-product-tile [merchantId]="merchantId" [product]="product" />
+    </div>
+</div>
+<div *ngIf="this.products" class="ClearLeft"></div>

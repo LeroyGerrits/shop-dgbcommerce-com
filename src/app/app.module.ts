@@ -47,8 +47,10 @@ import { MenuItemComponent } from './shared/components/menu-item/menu-item.compo
 import { MerchantPasswordResetLinkService } from './shared/services/MerchantPasswordResetLink.service';
 import { MerchantService } from './shared/services/Merchant.service';
 import { NgModule } from '@angular/core';
+import { ProductListComponent } from './shared/components/menu-item/product-list.component';
 import { ProductPhotoService } from './shared/services/ProductPhoto.service';
 import { ProductService } from './shared/services/Product.service';
+import { ProductTileComponent } from './shared/components/menu-item/product-tile.component';
 import { PublicWebsiteAboutComponent } from './public-website/about/about.component';
 import { PublicWebsiteComponent } from './public-website/public-website.component';
 import { PublicWebsiteIndexComponent } from './public-website/index/index.component';
@@ -67,6 +69,8 @@ import { UtilityService } from './shared/services/Utility.service';
     AppComponent,
     FileSizePipe,
     MenuItemComponent,
+    ProductListComponent,
+    ProductTileComponent,
     PublicWebsiteComponent,
     PublicWebsiteAboutComponent,
     PublicWebsiteIndexComponent,

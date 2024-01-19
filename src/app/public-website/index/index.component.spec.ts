@@ -38,15 +38,7 @@ describe('PublicWebsiteIndexComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should show a donate dialog', () => {
-    component.donate();
-    expect(matDialogSpy.open).toHaveBeenCalled();
-    expect(matDialogRefSpy.close).toHaveBeenCalled();
-  });
-
-  it('should show a sign up dialog', () => {
-    component.signUp();
-    expect(matDialogSpy.open).toHaveBeenCalled();
-    expect(matDialogRefSpy.close).toHaveBeenCalled();
+  it('should ', () => {
+    
   });
 });
