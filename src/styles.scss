@@ -336,6 +336,38 @@ div.LighterBlock {
     padding: 20px;
 }
 
+
+div.ProductTile {
+    background-color: var(--light-gray-color);
+}
+
+div.ProductTile a strong {
+    color: #fff;
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+div.ProductTile a:hover {
+    text-decoration: none;
+}
+
+div.ProductTile a img {
+    border: none;
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+div.ProductTile span.Price {
+    display: block;
+    font-size:1.6em;
+    line-height: 1.6em;
+    margin: 0 !important;
+}
+
 img.PublicWebsiteImage {
     display: block;
     margin: 20px auto;
@@ -460,15 +492,15 @@ td.NoDataCell {
 }
 
 .ClearBoth {
-    clear: both;
+    clear: both !important;
 }
 
 .ClearLeft {
-    clear: left;
+    clear: left !important;
 }
 
 .ClearRight {
-    clear: right;
+    clear: right !important;
 }
 
 .ColorGold {

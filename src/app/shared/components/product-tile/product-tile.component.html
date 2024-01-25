@@ -1,0 +1,13 @@
+<div class="ProductTile">
+    <div class="WrapperPadding20">
+        <a [routerLink]="['/product', product.Id, product.Name | SearchEngineFriendlyString]" title="{{product.Name}}">
+            <strong>{{product.Name}}</strong>
+            <img *ngIf="product.MainPhotoId" src="{{environment.API_URL}}/Resources/{{merchantId}}/ProductPhoto/{{product.MainPhotoId}}_thumbnail_400x400.{{product.MainPhotoExtension}}" width="400" height="400" alt="{{product.Name}}" />
+            <img *ngIf="!product.MainPhotoId" src="/assets/images/NoProduct.png" width="400" height="200" alt="{{product.Name}}" />
+        </a>
+        <button class="FloatRight" mat-raised-button color="primary" matTooltip="Add to cart" (click)="addToCart()">
+            <mat-icon class="Margin0">shopping_cart</mat-icon>
+        </button>
+        <span class="Price">{{product.Price}}</span>        
+    </div>
+</div>

@@ -21,4 +21,9 @@ export class ProductTileComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  addToCart(){
+    alert('hoi');
+    // Dialog hier
+  }
 }

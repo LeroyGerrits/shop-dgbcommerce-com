@@ -31,7 +31,7 @@ export class PublicWebsiteIndexComponent implements OnInit {
       this.titleService.setTitle(`${shop.Name} - Home`);
 
       const parameters: GetProductsParameters = {
-        //ShopId: shop.Id,
+        ShopId: shop.Id,
         //ShowOnHome: true
       };
 
