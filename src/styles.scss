@@ -341,6 +341,11 @@ div.ProductTile {
     background-color: var(--light-gray-color);
 }
 
+div.ProductTile a {
+    display:block;
+    margin-bottom: 10px;
+}
+
 div.ProductTile a strong {
     color: #fff;
     display: block;
@@ -363,7 +368,7 @@ div.ProductTile a img {
 
 div.ProductTile span.Price {
     display: block;
-    font-size:1.6em;
+    font-size: 1.4em;
     line-height: 1.6em;
     margin: 0 !important;
 }
