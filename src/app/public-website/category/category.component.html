@@ -1,3 +1,7 @@
+<div class="WrapperPadding20-8">
+    {{this.category?.Name}}
+</div>
+
 <app-product-list *ngIf="this.shop" [merchantId]="this.shop!.MerchantId" [products]="this.products" />
 
 <div *ngIf="!this.shop" class="WrapperPadding20-8 TextAlignCenter">

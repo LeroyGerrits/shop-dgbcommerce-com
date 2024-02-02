@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Constants } from './shared/Constants';
 import { NgModule } from '@angular/core';
 import { PublicWebsiteAboutComponent } from './public-website/about/about.component';
+import { PublicWebsiteCategoryComponent } from './public-website/category/category.component';
 import { PublicWebsiteComponent } from './public-website/public-website.component';
 import { PublicWebsiteIndexComponent } from './public-website/index/index.component';
 import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-authorized/not-authorized.component';
@@ -13,6 +14,9 @@ const routes: Routes = [
     path: '', component: PublicWebsiteComponent, title: Constants.TITLE_PREFIX, children: [
       { path: '', component: PublicWebsiteIndexComponent },
       { path: 'about', component: PublicWebsiteAboutComponent, title: `${Constants.TITLE_PREFIX} - About` },
+      { path: 'category', component: PublicWebsiteCategoryComponent, title: `${Constants.TITLE_PREFIX} - Category` },
+      { path: 'category/:categoryId', component: PublicWebsiteCategoryComponent, title: `${Constants.TITLE_PREFIX} - Category` },
+      { path: 'category/:categoryId/:categoryName', component: PublicWebsiteCategoryComponent, title: `${Constants.TITLE_PREFIX} - Category` },
       { path: 'not-authorized', component: PublicWebsiteNotAuthorizedComponent, title: `${Constants.TITLE_PREFIX} - Not authorized` },
       { path: '**', pathMatch: 'full', component: PublicWebsiteNotFoundComponent, title: `${Constants.TITLE_PREFIX} - Not found` }
     ]

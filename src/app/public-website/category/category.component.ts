@@ -36,7 +36,8 @@ export class PublicWebsiteCategoryComponent implements OnInit {
       this.categories = categories;
 
       if (queryStringCategoryId) {
-        this.category = this.categories[0];
+        console.log(queryStringCategoryId);
+        this.category = this.categories.find(category => category.Id == queryStringCategoryId);
       }
     });
 
