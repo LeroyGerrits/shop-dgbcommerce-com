@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationService } from './shared/services/Authentication.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { CategoryBreadcrumbComponent } from './shared/components/category-breadcrumb/category-breadcrumb.component';
 import { CategoryService } from './shared/services/Category.service';
 import { CountryService } from './shared/services/Country.service';
 import { CurrencyService } from './shared/services/Currency.service';
@@ -68,6 +69,7 @@ import { UtilityService } from './shared/services/Utility.service';
 @NgModule({
   declarations: [
     AppComponent,
+    CategoryBreadcrumbComponent,
     FileSizePipe,
     MenuItemComponent,
     ProductListComponent,

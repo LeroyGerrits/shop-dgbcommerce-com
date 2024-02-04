@@ -1,6 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
-import { Observable, of } from 'rxjs';
 
 import { CategoryService } from './shared/services/Category.service';
 import { Constants } from './shared/Constants';

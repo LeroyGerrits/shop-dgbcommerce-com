@@ -1,13 +1,13 @@
-<div class="WrapperPadding20-8">
-    {{this.category?.Name}}
+<div class="WrapperPadding20-8 BreadCrumb">
+    <app-category-breadcrumb *ngIf="this.category" [category]="this.category" [textOnly]="true" />
 </div>
 
 <app-product-list *ngIf="this.shop" [merchantId]="this.shop!.MerchantId" [products]="this.products" />
 
 <div *ngIf="!this.shop" class="WrapperPadding20-8 TextAlignCenter">
-    <span >This subdomain has not yet been claimed.<br />Sign up for a free account at <a href="{{constants.DGB_COMMERCE_URL}}" target="_blank">{{constants.DGB_COMMERCE_DOMAIN}}</a> and claim your shop and subdomain for free.</span>
+    <span>This subdomain has not yet been claimed.<br />Sign up for a free account at <a href="{{constants.DGB_COMMERCE_URL}}" target="_blank">{{constants.DGB_COMMERCE_DOMAIN}}</a> and claim your shop and subdomain for free.</span>
 </div>
 
 <div *ngIf="!this.category" class="WrapperPadding20-8 TextAlignCenter">
-    <span >This subdomain has not yet been claimed.<br />Sign up for a free account at <a href="{{constants.DGB_COMMERCE_URL}}" target="_blank">{{constants.DGB_COMMERCE_DOMAIN}}</a> and claim your shop and subdomain for free.</span>
+    <span>This subdomain has not yet been claimed.<br />Sign up for a free account at <a href="{{constants.DGB_COMMERCE_URL}}" target="_blank">{{constants.DGB_COMMERCE_DOMAIN}}</a> and claim your shop and subdomain for free.</span>
 </div>

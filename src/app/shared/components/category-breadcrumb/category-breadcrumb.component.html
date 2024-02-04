@@ -1,0 +1,4 @@
+<app-category-breadcrumb *ngIf="this.parentCategory" [category]="this.parentCategory" [textOnly]="false" />
+<span class="Separator">/</span>
+<span *ngIf="this.textOnly">{{category.Name}}</span>
+<a *ngIf="!this.textOnly" [routerLink]="['/category/' + category.Id + '/' + this.searchEngineFriendlyStringPipe.transform(category.Name)]">{{category.Name}}</a>

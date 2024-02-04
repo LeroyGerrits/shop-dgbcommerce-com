@@ -17,7 +17,7 @@ import { UtilityService } from 'src/app/shared/services/Utility.service';
 export class PublicWebsiteCategoryComponent implements OnInit {
   public constants = Constants;
 
-  public categories: PublicCategory[] = [];
+  public categories: PublicCategory[] | undefined;
   public category: PublicCategory | undefined;
   public products: PublicProduct[] = [];
   public shop: PublicShop | undefined;
@@ -30,32 +30,33 @@ export class PublicWebsiteCategoryComponent implements OnInit {
     private utilityService: UtilityService) { }
 
   ngOnInit() {
-    const queryStringCategoryId = this.route.snapshot.paramMap.get('categoryId');
+    this.route.params.subscribe(params => {
+      const queryStringCategoryId = params['categoryId'];
 
-    this.utilityService.activeCategories$.subscribe(categories => {
-      this.categories = categories;
+      this.utilityService.activeCategories$.subscribe(categories => {
+        this.categories = categories;
 
-      if (queryStringCategoryId) {
-        console.log(queryStringCategoryId);
-        this.category = this.categories.find(category => category.Id == queryStringCategoryId);
-      }
-    });
+        if (categories.length > 0 && queryStringCategoryId) {
+          this.category = this.utilityService.getCategoryById(queryStringCategoryId);
+        }
+      });
 
-    this.utilityService.activeShop$.subscribe(shop => {
-      this.shop = shop;
-      this.metaService.addTag({ name: 'keywords', content: shop.Name });
-      this.titleService.setTitle(`${shop.Name} - Home`);
+      this.utilityService.activeShop$.subscribe(shop => {
+        this.shop = shop;
+        this.metaService.addTag({ name: 'keywords', content: shop.Name });
+        this.titleService.setTitle(`${shop.Name} - Home`);
 
-      const parameters: GetProductsParameters = {
-        ShopId: shop.Id
-      };
+        const parameters: GetProductsParameters = {
+          ShopId: shop.Id
+        };
 
-      if (queryStringCategoryId) {
-        parameters.CategoryId = queryStringCategoryId;
-      }
+        if (queryStringCategoryId) {
+          parameters.CategoryId = queryStringCategoryId;
+        }
 
-      this.productService.getList(parameters).subscribe(products => {
-        this.products = products;
+        this.productService.getList(parameters).subscribe(products => {
+          this.products = products;
+        });
       });
     });
   }

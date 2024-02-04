@@ -213,6 +213,12 @@ p {
     padding: 3px;
 }
 
+.BreadCrumb span.Separator {
+    color:var(--lightest-blue-color);
+    margin:0 10px;
+}
+
+
 #Header {
     background-color: var(--light-blue-color);
 }
