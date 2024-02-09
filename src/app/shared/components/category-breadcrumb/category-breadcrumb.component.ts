@@ -1,8 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 
-import { Environment } from '../../environments/Environment.prod';
 import { PublicCategory } from '../../models/viewmodels/PublicCategory.model';
-import { Router } from '@angular/router';
 import { SearchEngineFriendlyStringPipe } from '../../pipes/SearchEngineFriendlyString.pipe';
 import { UtilityService } from '../../services/Utility.service';
 
@@ -10,23 +8,28 @@ import { UtilityService } from '../../services/Utility.service';
   selector: 'app-category-breadcrumb',
   templateUrl: './category-breadcrumb.component.html'
 })
-export class CategoryBreadcrumbComponent implements OnInit {
+export class CategoryBreadcrumbComponent {
   @Input() category!: PublicCategory;
   @Input() textOnly: boolean = false;
+  @Output() booleanEmitter = new EventEmitter();
 
   parentCategory: PublicCategory | undefined;
 
-  environment = Environment;
-
   constructor(
-    private router: Router,
     public searchEngineFriendlyStringPipe: SearchEngineFriendlyStringPipe,
     private utilityService: UtilityService
   ) { }
 
-  ngOnInit() {
-    if (this.category.ParentId) {
-      this.parentCategory = this.utilityService.getCategoryById(this.category.ParentId);
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['category'].currentValue != changes["category"].previousValue) {
+      let currentCategory = <PublicCategory>changes["category"].currentValue;
+      this.category = currentCategory;
+
+      if (currentCategory.ParentId) {
+        this.parentCategory = this.utilityService.getCategoryById(currentCategory.ParentId);
+      } else {
+        this.parentCategory = undefined;
+      }
     }
   }
 }

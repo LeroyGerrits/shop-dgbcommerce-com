@@ -26,18 +26,20 @@ export class PublicWebsiteIndexComponent implements OnInit {
 
   ngOnInit() {
     this.utilityService.activeShop$.subscribe(shop => {
-      this.shop = shop;
-      this.metaService.addTag({ name: 'keywords', content: shop.Name });
-      this.titleService.setTitle(`${shop.Name} - Home`);
+      if (shop.Id) {
+        this.shop = shop;
+        this.metaService.addTag({ name: 'keywords', content: shop.Name });
+        this.titleService.setTitle(`${shop.Name} - Home`);
 
-      const parameters: GetProductsParameters = {
-        ShopId: shop.Id,
-        //ShowOnHome: true
-      };
+        const parameters: GetProductsParameters = {
+          ShopId: shop.Id,
+          ShowOnHome: true
+        };
 
-      this.productService.getList(parameters).subscribe(products => {
-        this.products = products;
-      });
+        this.productService.getList(parameters).subscribe(products => {
+          this.products = products;
+        });
+      }
     });
   }
 }

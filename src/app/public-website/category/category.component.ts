@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { Observable, Subject, of } from 'rxjs';
 
 import { ActivatedRoute } from '@angular/router';
 import { Constants } from 'src/app/shared/Constants';
@@ -17,7 +18,6 @@ import { UtilityService } from 'src/app/shared/services/Utility.service';
 export class PublicWebsiteCategoryComponent implements OnInit {
   public constants = Constants;
 
-  public categories: PublicCategory[] | undefined;
   public category: PublicCategory | undefined;
   public products: PublicProduct[] = [];
   public shop: PublicShop | undefined;
@@ -31,32 +31,33 @@ export class PublicWebsiteCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const queryStringCategoryId = params['categoryId'];
+      let queryStringCategoryId = params['categoryId'];
 
       this.utilityService.activeCategories$.subscribe(categories => {
-        this.categories = categories;
-
         if (categories.length > 0 && queryStringCategoryId) {
           this.category = this.utilityService.getCategoryById(queryStringCategoryId);
+
+          if (this.category) {
+            this.titleService.setTitle(this.category.Name);
+            this.metaService.addTag({ name: 'keywords', content: this.category.Name });
+          }
         }
       });
 
       this.utilityService.activeShop$.subscribe(shop => {
-        this.shop = shop;
-        this.metaService.addTag({ name: 'keywords', content: shop.Name });
-        this.titleService.setTitle(`${shop.Name} - Home`);
+        if (shop.Id) {
+          this.shop = shop;
 
-        const parameters: GetProductsParameters = {
-          ShopId: shop.Id
-        };
+          const parameters: GetProductsParameters = { ShopId: shop.Id };
 
-        if (queryStringCategoryId) {
-          parameters.CategoryId = queryStringCategoryId;
+          if (queryStringCategoryId) {
+            parameters.CategoryId = queryStringCategoryId;
+          }
+
+          this.productService.getList(parameters).subscribe(products => {
+            this.products = products;
+          });
         }
-
-        this.productService.getList(parameters).subscribe(products => {
-          this.products = products;
-        });
       });
     });
   }
