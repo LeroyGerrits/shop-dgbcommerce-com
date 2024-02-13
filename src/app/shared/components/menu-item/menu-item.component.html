@@ -1,7 +1,7 @@
 <mat-menu #buildMenu="matMenu" [overlapTrigger]="false">
     <ng-container *ngFor="let category of categories">
         <ng-container *ngIf="category.Children">
-            <button mat-menu-item color="primary" [matMenuTriggerFor]="menu.buildMenu">
+            <button mat-menu-item color="primary" [routerLink]="['/category/' + category.Id + '/' + this.searchEngineFriendlyStringPipe.transform(category.Name)]" [matMenuTriggerFor]="menu.buildMenu">
                 {{category.Name}}
             </button>
             <app-menu-item #menu [categories]="category.Children"></app-menu-item>

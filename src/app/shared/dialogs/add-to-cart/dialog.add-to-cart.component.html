@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Add to cart</h2>
+<mat-dialog-content class="mat-typography">
+  
+  <mat-form-field>
+    <mat-label>Amount</mat-label>
+    <mat-hint>Only X left in stock</mat-hint>
+    <input matInput [formControl]="controlAmount" [ngClass]="{ 'is-invalid': this.formSubmitted && controlAmount.errors }" />
+    <div *ngIf="this.formSubmitted && controlAmount.errors" class="TextError">
+      <div *ngIf="controlAmount.errors['required']">E-mail address is required</div>
+      <div *ngIf="controlAmount.errors['email']">A valid e-mail address is required</div>
+    </div>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="disabled" mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>
+    <mat-icon>shopping_cart</mat-icon>
+    Add to cart
+  </button>
+</mat-dialog-actions>

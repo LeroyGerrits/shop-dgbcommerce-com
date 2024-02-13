@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { DialogAddToCartComponent } from '../../dialogs/add-to-cart/dialog.add-to-cart.component';
 import { Environment } from '../../environments/Environment.prod';
+import { MatDialog } from '@angular/material/dialog';
 import { PublicProduct } from '../../models/viewmodels/PublicProduct.model';
 import { Router } from '@angular/router';
 
@@ -8,22 +10,22 @@ import { Router } from '@angular/router';
   selector: 'app-product-tile',
   templateUrl: './product-tile.component.html'
 })
-export class ProductTileComponent implements OnInit {
+export class ProductTileComponent {
   @Input() merchantId!: string;
   @Input() product!: PublicProduct;
 
   environment = Environment;
 
   constructor(
-    private router: Router
+    public dialog: MatDialog
   ) { }
 
-  ngOnInit() {
-
-  }
-
   addToCart(){
-    alert('hoi');
-    // Dialog hier
+    const dialogAddToCartUp = this.dialog.open(DialogAddToCartComponent);
+    dialogAddToCartUp.afterClosed().subscribe(result => {
+      if (result) {
+        dialogAddToCartUp.close();
+      }
+    });
   }
 }

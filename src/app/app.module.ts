@@ -13,6 +13,7 @@ import { CurrencyService } from './shared/services/Currency.service';
 import { CustomerService } from './shared/services/Customer.service';
 import { DatePipe } from '@angular/common';
 import { DeliveryMethodService } from './shared/services/DeliveryMethod.service';
+import { DialogAddToCartComponent } from './shared/dialogs/add-to-cart/dialog.add-to-cart.component';
 import { DigiByteNodeService } from './shared/services/DigiByteNode.service';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { FileSizePipe } from './shared/pipes/FileSize.pipe';
@@ -70,6 +71,7 @@ import { UtilityService } from './shared/services/Utility.service';
   declarations: [
     AppComponent,
     CategoryBreadcrumbComponent,
+    DialogAddToCartComponent,
     FileSizePipe,
     MenuItemComponent,
     ProductListComponent,
@@ -85,7 +87,7 @@ import { UtilityService } from './shared/services/Utility.service';
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrowserModule,
+    BrowserModule,    
     FormsModule,
     HttpClientModule,
     MatBadgeModule,
