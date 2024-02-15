@@ -1,13 +1,19 @@
 <h2 mat-dialog-title>Add to cart</h2>
 <mat-dialog-content class="mat-typography">
-  
+
   <mat-form-field>
     <mat-label>Amount</mat-label>
-    <mat-hint>Only X left in stock</mat-hint>
+    <mat-hint *ngIf="this.product?.Stock">{{this.product.Stock}} left in stock</mat-hint>
+    <button mat-raised-button matPrefix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="minus()">
+      <mat-icon>remove</mat-icon>
+    </button>
     <input matInput [formControl]="controlAmount" [ngClass]="{ 'is-invalid': this.formSubmitted && controlAmount.errors }" />
+    <button mat-raised-button matSuffix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="plus()">
+      <mat-icon>add</mat-icon>
+    </button>
     <div *ngIf="this.formSubmitted && controlAmount.errors" class="TextError">
-      <div *ngIf="controlAmount.errors['required']">E-mail address is required</div>
-      <div *ngIf="controlAmount.errors['email']">A valid e-mail address is required</div>
+      <div *ngIf="controlAmount.errors['required']">Amount is required</div>
+      <div *ngIf="controlAmount.errors['pattern']">A valid amount is required</div>
     </div>
   </mat-form-field>
 

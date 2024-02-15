@@ -21,10 +21,13 @@ export class ProductTileComponent {
   ) { }
 
   addToCart(){
-    const dialogAddToCartUp = this.dialog.open(DialogAddToCartComponent);
-    dialogAddToCartUp.afterClosed().subscribe(result => {
+    const dialogAddToCart = this.dialog.open(DialogAddToCartComponent);
+    const instance = dialogAddToCart.componentInstance;
+    instance.product = this.product;
+
+    dialogAddToCart.afterClosed().subscribe(result => {
       if (result) {
-        dialogAddToCartUp.close();
+        dialogAddToCart.close();
       }
     });
   }

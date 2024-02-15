@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'dialog-add-to-cart',
-  templateUrl: 'dialog.add-to-cart.component.html'
+  templateUrl: 'dialog.add-to-cart.component.html',
+  styleUrl: 'dialog.add-to-cart.component.scss'
 })
 export class DialogAddToCartComponent {
   @Input() product!: PublicProduct;
@@ -31,6 +32,20 @@ export class DialogAddToCartComponent {
     this.form = new FormGroup([
       this.controlAmount
     ]);
+  }
+
+  minus() {
+    if (this.controlAmount.value) {
+      let currentValue = parseInt(this.controlAmount.value);
+      this.controlAmount.setValue((currentValue - 1).toString());
+    }
+  }
+
+  plus() {
+    if (this.controlAmount.value) {
+      let currentValue = parseInt(this.controlAmount.value);
+      this.controlAmount.setValue((currentValue + 1).toString());
+    }
   }
 
   onSubmit() {
