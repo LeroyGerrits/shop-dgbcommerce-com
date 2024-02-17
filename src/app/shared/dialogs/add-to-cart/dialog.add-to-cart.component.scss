@@ -1,9 +1,16 @@
 .PlusMinusButton {
   margin: 0 10px;
-  min-width:auto;
+  min-width: auto;
 }
 
 .PlusMinusButton mat-icon {
-  margin-left:0;
-  margin-right:0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+span.TotalPrice {
+  display: block;
+  font-size: 1.2em;
+  padding-top: 20px;
+  text-align: center;
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: 'dialog.add-to-cart.component.html',
   styleUrl: 'dialog.add-to-cart.component.scss'
 })
-export class DialogAddToCartComponent {
+export class DialogAddToCartComponent implements OnInit {
   @Input() product!: PublicProduct;
 
   public controlAmount = new FormControl('1', [Validators.required, Validators.pattern("^[0-9]*$")]);
@@ -22,6 +22,8 @@ export class DialogAddToCartComponent {
   public form!: FormGroup;
   public formLoading = false;
   public formSubmitted = false;
+
+  public totalPrice: number = 0;
 
   constructor(
     private dialogRefComponent: MatDialogRef<any>,
@@ -34,10 +36,15 @@ export class DialogAddToCartComponent {
     ]);
   }
 
+  ngOnInit(): void {
+    this.calculateTotal();
+  }
+
   minus() {
     if (this.controlAmount.value) {
       let currentValue = parseInt(this.controlAmount.value);
       this.controlAmount.setValue((currentValue - 1).toString());
+      this.change();
     }
   }
 
@@ -45,6 +52,30 @@ export class DialogAddToCartComponent {
     if (this.controlAmount.value) {
       let currentValue = parseInt(this.controlAmount.value);
       this.controlAmount.setValue((currentValue + 1).toString());
+      this.change();
+    }
+  }
+
+  change() {
+    if (this.controlAmount.value && !this.controlAmount.errors) {
+      let currentValue = parseInt(this.controlAmount.value);
+
+      if (currentValue == 0) {
+        this.controlAmount.setValue('1');
+        this.change();
+      } else if (this.product.Stock && currentValue > this.product.Stock) {
+        this.controlAmount.setValue(this.product.Stock.toString());
+        this.change();
+      } else {
+        this.calculateTotal();
+      }
+    }
+  }
+
+  calculateTotal() {
+    if (this.controlAmount.value) {
+      let currentValue = parseInt(this.controlAmount.value);
+      this.totalPrice = currentValue * this.product.Price;
     }
   }
 

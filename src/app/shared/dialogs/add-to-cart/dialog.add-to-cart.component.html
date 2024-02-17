@@ -7,7 +7,7 @@
     <button mat-raised-button matPrefix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="minus()">
       <mat-icon>remove</mat-icon>
     </button>
-    <input matInput [formControl]="controlAmount" [ngClass]="{ 'is-invalid': this.formSubmitted && controlAmount.errors }" />
+    <input matInput [formControl]="controlAmount" [ngClass]="{ 'is-invalid': this.formSubmitted && controlAmount.errors }" (keyup)="change()" />
     <button mat-raised-button matSuffix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="plus()">
       <mat-icon>add</mat-icon>
     </button>
@@ -17,10 +17,12 @@
     </div>
   </mat-form-field>
 
+  <span class="TotalPrice">Ɗ {{totalPrice | number:'1.0-8'}}</span>
+
 </mat-dialog-content>
 <mat-dialog-actions align="center">
   <button mat-raised-button color="disabled" mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>
+  <button mat-raised-button color="primary" [disabled]="controlAmount.errors" [mat-dialog-close]="true" cdkFocusInitial>
     <mat-icon>shopping_cart</mat-icon>
     Add to cart
   </button>
