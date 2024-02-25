@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
+import { Constants } from '../../Constants';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MutationResult } from '../../models/MutationResult';
 import { PublicProduct } from '../../models/viewmodels/PublicProduct.model';
@@ -15,7 +16,7 @@ import { Router } from '@angular/router';
 export class DialogAddToCartComponent implements OnInit {
   @Input() product!: PublicProduct;
 
-  public controlAmount = new FormControl('1', [Validators.required, Validators.pattern("^[0-9]*$")]);
+  public controlAmount = new FormControl('1', [Validators.required, Validators.pattern(Constants.REGEX_PATTERN_NUMBER)]);
 
   public snackBarRef: MatSnackBarRef<TextOnlySnackBar> | undefined;
 

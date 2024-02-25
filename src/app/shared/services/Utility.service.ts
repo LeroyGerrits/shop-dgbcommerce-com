@@ -1,14 +1,17 @@
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { PublicCategory } from '../models/viewmodels/PublicCategory.model';
+import { PublicPage } from '../models/viewmodels/PublicPage.model';
 import { PublicShop } from '../models/viewmodels/PublicShop.model';
 
 @Injectable()
 export class UtilityService {
     private categories$ = new BehaviorSubject<any>({});
+    private pages$ = new BehaviorSubject<any>({});
     private shop$ = new BehaviorSubject<any>({});
 
     public activeCategories$ = this.categories$.asObservable();
+    public activePages$ = this.pages$.asObservable();
     public activeShop$ = this.shop$.asObservable();
 
     public getCategoryById(id: string): any {
@@ -19,6 +22,10 @@ export class UtilityService {
 
     public setCategories(categories: PublicCategory[]) {
         this.categories$.next(categories);
+    }
+
+    public setPages(pages: PublicPage[]) {
+        this.pages$.next(pages);
     }
 
     public setShop(shop: PublicShop) {

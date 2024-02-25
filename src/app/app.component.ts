@@ -5,7 +5,9 @@ import { CategoryService } from './shared/services/Category.service';
 import { Constants } from './shared/Constants';
 import { Customer } from './shared/models/Customer.model';
 import { MatDialog } from '@angular/material/dialog';
+import { PageService } from './shared/services/Page.service';
 import { PublicCategory } from './shared/models/viewmodels/PublicCategory.model';
+import { PublicPage } from './shared/models/viewmodels/PublicPage.model';
 import { PublicShop } from './shared/models/viewmodels/PublicShop.model';
 import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
 import { ShopService } from './shared/services/Shop.service';
@@ -22,12 +24,17 @@ export class AppComponent implements OnInit {
   public activeCustomer?: Customer | null;
   public categories: PublicCategory[] | undefined;
   public currentYear: number = new Date().getFullYear();
+  public pages: PublicPage[] | undefined;
+  public pagesFooter: PublicPage[] = [];
+  public pagesHeader: PublicPage[] = [];
+  public pagesTopBar: PublicPage[] = [];
   public snackBarRef: MatSnackBarRef<TextOnlySnackBar> | undefined;
   public shop: PublicShop | undefined;
 
   constructor(
     private dialog: MatDialog,
     private categoryService: CategoryService,
+    private pageService: PageService,
     public searchEngineFriendlyStringPipe: SearchEngineFriendlyStringPipe,
     private shopService: ShopService,
     private snackBar: MatSnackBar,
@@ -52,11 +59,23 @@ export class AppComponent implements OnInit {
       next: categories => this.onRetrieveCategories(categories),
       error: error => this.snackBarRef = this.snackBar.open(error, 'Close', { panelClass: ['error-snackbar'] })
     });
+
+    this.pageService.getByShopIdPublic(shop.Id).subscribe({
+      next: pages => this.onRetrievePages(pages),
+      error: error => this.snackBarRef = this.snackBar.open(error, 'Close', { panelClass: ['error-snackbar'] })
+    });
   }
 
   onRetrieveCategories(categories: PublicCategory[]) {
     this.categories = categories;
     this.utilityService.setCategories(categories);
+  }
+
+  onRetrievePages(pages: PublicPage[]) {
+    this.pages = pages;
+    this.utilityService.setPages(pages);
+
+    //this.pagesFooter = pages.find(page => page.Categories?.includes(Constants.PAGE_CATEGORY_ID_FOOTER));
   }
 
   login() {

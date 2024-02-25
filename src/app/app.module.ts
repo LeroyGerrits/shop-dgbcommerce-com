@@ -49,6 +49,7 @@ import { MenuItemComponent } from './shared/components/menu-item/menu-item.compo
 import { MerchantPasswordResetLinkService } from './shared/services/MerchantPasswordResetLink.service';
 import { MerchantService } from './shared/services/Merchant.service';
 import { NgModule } from '@angular/core';
+import { PageService } from './shared/services/Page.service';
 import { ProductListComponent } from './shared/components/product-list/product-list.component';
 import { ProductPhotoService } from './shared/services/ProductPhoto.service';
 import { ProductService } from './shared/services/Product.service';
@@ -135,6 +136,7 @@ import { UtilityService } from './shared/services/Utility.service';
     FileSizePipe,
     MerchantService,
     MerchantPasswordResetLinkService,
+    PageService,
     ProductService,
     ProductPhotoService,
     SearchEngineFriendlyStringPipe,
