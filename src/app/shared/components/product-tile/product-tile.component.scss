@@ -1,0 +1,35 @@
+div.ProductTile {
+    background-color: var(--light-gray-color);
+}
+
+div.ProductTile a {
+    display:block;
+    margin-bottom: 10px;
+}
+
+div.ProductTile a strong {
+    color: #fff;
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+div.ProductTile a:hover {
+    text-decoration: none;
+}
+
+div.ProductTile a img {
+    border: none;
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+div.ProductTile span.Price {
+    display: block;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin: 0 !important;
+}

@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-tile',
-  templateUrl: './product-tile.component.html'
+  templateUrl: './product-tile.component.html',
+  styleUrl:'./product-tile.component.scss'
 })
 export class ProductTileComponent {
   @Input() merchantId!: string;

@@ -63,8 +63,6 @@
     --table-row-alternating-background-color: #383838;
 }
 
-
-
 $md-dgbcommercepalette-primary: (
     50 : #e4f0fb,
     100 : #bcd9f6,
@@ -171,6 +169,62 @@ h4 {
     margin: 0 !important;
 }
 
+header {
+    background-color: var(--light-blue-color);
+}
+
+header div.TitleAndNavigation {
+    padding: 40px 0;
+}
+
+header div.TitleAndNavigation a#Title {
+    display: block;
+    float: left;
+    margin-left: 8px;
+    white-space: nowrap;
+}
+
+header div.TitleAndNavigation a#Title span {
+    color: #fff;
+    display: inline-block;
+    font-family: 'robotoblack_italic';
+    font-size: 2em;
+    line-height: 64px;
+    margin-left: 20px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #222;
+}
+
+header div.TitleAndNavigation ul {
+    display: block;
+    float: right;
+    list-style-type: none;
+    margin: 0 8px 0 0;
+    padding: 0;
+}
+
+header div.TitleAndNavigation ul li {
+    display: inline;
+    line-height: 64px;
+    margin: 0 0 0 40px;
+    padding: 0;
+}
+
+header div.TitleAndNavigation ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'open_sans_condensedbold', Helvetica, Tahoma;
+    font-size: 1.4em;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #222;
+    text-transform: uppercase;
+    transition: all .3s ease-in-out;
+}
+
+header div.TitleAndNavigation ul li a:hover,
+header div.TitleAndNavigation ul li a.Active {
+    color: rgba(255, 255, 255, 1);
+}
+
 p {
     text-align: justify;
     line-height: 1.8em;
@@ -214,25 +268,10 @@ p {
 }
 
 .BreadCrumb span.Separator {
-    color:var(--lightest-blue-color);
-    margin:0 10px;
+    color: var(--lightest-blue-color);
+    margin: 0 10px;
 }
 
-
-#Header {
-    background-color: var(--light-blue-color);
-}
-
-#Header span {
-    color: #fff;
-    display: block;
-    font-family: 'robotoblack_italic';
-    font-size: 2em;
-    line-height: 64px;
-    text-align: center;
-    text-decoration: none;
-    text-shadow: 1px 1px 0 #222;
-}
 
 #Body {
     background-color: var(--dark-gray-color);
@@ -340,43 +379,6 @@ div.InvalidFeedback {
 div.LighterBlock {
     background-color: var(--light-gray-color);
     padding: 20px;
-}
-
-
-div.ProductTile {
-    background-color: var(--light-gray-color);
-}
-
-div.ProductTile a {
-    display:block;
-    margin-bottom: 10px;
-}
-
-div.ProductTile a strong {
-    color: #fff;
-    display: block;
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    text-align: center;
-    text-decoration: none;
-}
-
-div.ProductTile a:hover {
-    text-decoration: none;
-}
-
-div.ProductTile a img {
-    border: none;
-    display: block;
-    height: auto;
-    width: 100%;
-}
-
-div.ProductTile span.Price {
-    display: block;
-    font-size: 1.2em;
-    line-height: 1.6em;
-    margin: 0 !important;
 }
 
 img.PublicWebsiteImage {
@@ -692,58 +694,23 @@ mat-form-field {
         display: none;
     }
 
-    #Header div.LogoAndNavigation a#Logo {
+    header div.TitleAndNavigation a#Title {
         float: none;
         margin: 0;
         text-align: center;
     }
 
-    #Header div.LogoAndNavigation ul {
+    header div.TitleAndNavigation ul {
         float: none;
         list-style-type: none;
         margin: 0;
     }
 
-    #Header div.LogoAndNavigation ul li {
+    header div.TitleAndNavigation ul li {
         display: block;
         line-height: 2em;
         margin: 0;
         text-align: center;
-    }
-
-    #Header div.CallToAction {
-        height: auto;
-    }
-
-    #Header div.CallToAction div.Wrapper {
-        text-align: center;
-        padding: 20px 0;
-        width: auto;
-    }
-
-    #Header div.CallToAction div.Wrapper img {
-        display: none;
-    }
-
-    #Header div.CallToAction div.Wrapper strong {
-        padding: 0 0 10px 0;
-    }
-
-    #Header div.CallToAction div.Wrapper span.Explanation {
-        color: #e0e0e0;
-        display: block;
-        text-shadow: 1px 1px 0 #222;
-    }
-
-    #Header div.CallToAction div.Wrapper div.Buttons {
-        display: table;
-        margin: 0 auto;
-        padding-top: 20px;
-        text-align: center;
-    }
-
-    #Header div.CallToAction div.Wrapper div.Buttons button {
-        margin: 0 10px;
     }
 
     div.CenteredContainer {
