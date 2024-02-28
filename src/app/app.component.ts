@@ -75,7 +75,9 @@ export class AppComponent implements OnInit {
     this.pages = pages;
     this.utilityService.setPages(pages);
 
-    //this.pagesFooter = pages.find(page => page.Categories?.includes(Constants.PAGE_CATEGORY_ID_FOOTER));
+    this.pagesFooter = pages.filter(page => page.CategoryIds?.includes(Constants.PAGE_CATEGORY_ID_FOOTER));
+    this.pagesHeader = pages.filter(page => page.CategoryIds?.includes(Constants.PAGE_CATEGORY_ID_HEADER));
+    this.pagesTopBar = pages.filter(page => page.CategoryIds?.includes(Constants.PAGE_CATEGORY_ID_TOP_BAR));
   }
 
   login() {

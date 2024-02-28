@@ -300,7 +300,6 @@ p {
 }
 
 #BottomBar {
-    background-color: var(--dark-gray-color);
     color: #bbb;
     text-align: center;
 }
@@ -310,7 +309,7 @@ p {
     vertical-align: middle;
 }
 
-#BottomBar a {
+#BottomBar a.PoweredBy {
     color: #fff;
     font-family: 'robotoblack_italic';
     text-decoration: none;

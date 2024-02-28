@@ -2,13 +2,13 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatDialog } from '@angular/material/dialog';
-import { PublicWebsiteCategoryComponent } from './category.component';
+import { PublicWebsitePageComponent } from './page.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { of } from 'rxjs';
 
-describe('PublicWebsiteCategoryComponent', () => {
-  let component: PublicWebsiteCategoryComponent;
-  let fixture: ComponentFixture<PublicWebsiteCategoryComponent>;
+describe('PublicWebsitePageComponent', () => {
+  let component: PublicWebsitePageComponent;
+  let fixture: ComponentFixture<PublicWebsitePageComponent>;
 
   let matDialogRefSpy: any;
   let matDialogSpy: jasmine.SpyObj<MatDialog>
@@ -26,14 +26,14 @@ describe('PublicWebsiteCategoryComponent', () => {
     matDialogSpy.open.and.returnValue(matDialogRefSpy);
 
     TestBed.configureTestingModule({
-      declarations: [PublicWebsiteCategoryComponent],
+      declarations: [PublicWebsitePageComponent],
       imports: [RouterLink, QRCodeModule],
       providers: [
         { provide: ActivatedRoute, useValue: fakeActivatedRoute },
         { provide: MatDialog, useValue: matDialogSpy }
       ]
     });
-    fixture = TestBed.createComponent(PublicWebsiteCategoryComponent);
+    fixture = TestBed.createComponent(PublicWebsitePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

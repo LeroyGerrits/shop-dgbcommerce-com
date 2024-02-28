@@ -4,5 +4,5 @@ export class PublicPage {
     Id!: string;
     Title!: string;
     Content?: string;
-    Categories?: PageCategory[];
+    CategoryIds?: string[];
 }

@@ -20,6 +20,16 @@ export class UtilityService {
         return foundCategory;
     }
 
+    public getPageById(id: string): any {
+        let foundPage: any;
+        this.pages$.subscribe(pages => {
+            let foundPages = (<PublicPage[]>pages).filter(page => page.Id == id);
+            if (foundPages.length == 1)
+                foundPage = foundPages[0];
+        });
+        return foundPage;
+    }
+
     public setCategories(categories: PublicCategory[]) {
         this.categories$.next(categories);
     }

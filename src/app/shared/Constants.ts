@@ -4,9 +4,9 @@ export abstract class Constants {
     static readonly DGB_COMMERCE_DOMAIN: string = 'dgbcommerce.com';
     static readonly DGB_COMMERCE_URL: string = 'https://www.dgbcommerce.com';
     static readonly EMPTY_GUID: string = '00000000-0000-0000-0000-000000000000';
-    static readonly PAGE_CATEGORY_ID_FOOTER = 'EB4C6CC2-C86B-4972-8DCA-D2F17A58A728';
-    static readonly PAGE_CATEGORY_ID_HEADER = '6518E92B-CF52-4C31-9F4D-83D3473AE55F';
-    static readonly PAGE_CATEGORY_ID_TOP_BAR = 'D1EE4995-2426-41A9-929C-2B8711A57141';
+    static readonly PAGE_CATEGORY_ID_FOOTER = 'eb4c6cc2-c86b-4972-8dca-d2f17a58a728';
+    static readonly PAGE_CATEGORY_ID_HEADER = '6518e92b-cf52-4c31-9f4d-83d3473ae55f';
+    static readonly PAGE_CATEGORY_ID_TOP_BAR = 'd1ee4995-2426-41a9-929c-2b8711a57141';
     static readonly QR_CODE_COLOR_DARK: string = '#ffffff';
     static readonly QR_CODE_COLOR_LIGHT: string = '#202020';
     static readonly QR_CODE_LOGO: string = 'assets/images/QrCodeLogo.png';

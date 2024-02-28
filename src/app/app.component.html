@@ -43,12 +43,15 @@
           <button mat-button class="ToolbarItemNonCollapsible" [routerLink]="['/category/' + category.Id + '/' + this.searchEngineFriendlyStringPipe.transform(category.Name)]">
             {{category.Name}}
           </button>
-        </ng-container>
+        </ng-container>        
       </ng-container>
+      <button mat-button class="ToolbarItemNonCollapsible" *ngFor="let page of this.pagesTopBar" [routerLink]="['/page/' + page.Id + '/' + this.searchEngineFriendlyStringPipe.transform(page.Title)]">
+        {{page.Title}}
+      </button>
 
       <button mat-button [matMenuTriggerFor]="ControlPanel" class="ToolbarItemCollapsible">
         <mat-icon>menu</mat-icon>
-        Categories
+        Menu
       </button>
 
       <mat-menu #ControlPanel="matMenu">
@@ -65,6 +68,9 @@
             </button>
           </ng-container>
         </ng-container>
+        <button mat-menu-item class="ToolbarItemNonCollapsible" *ngFor="let page of this.pagesTopBar" [routerLink]="['/page/' + page.Id + '/' + this.searchEngineFriendlyStringPipe.transform(page.Title)]">
+          {{page.Title}}
+        </button>
       </mat-menu>
     </mat-toolbar>
 
@@ -79,11 +85,9 @@
       </a>
       <ul>
         <li><a [routerLink]="['/']" [routerLinkActive]="['Active']" [routerLinkActiveOptions]="{exact: true}">Home</a></li>
-        <li><a [routerLink]="['/news']" [routerLinkActive]="['Active']">News</a></li>
-        <li><a [routerLink]="['/pricing']" [routerLinkActive]="['Active']">Pricing</a></li>
-        <li><a [routerLink]="['/faq']" [routerLinkActive]="['Active']">FAQ</a></li>
-        <li><a [routerLink]="['/shops']" [routerLinkActive]="['Active']">Shops</a></li>
-        <li><a [routerLink]="['/about']" [routerLinkActive]="['Active']">About</a></li>
+        <li *ngFor="let page of this.pagesHeader">
+          <a [routerLink]="['/page/' + page.Id + '/' + this.searchEngineFriendlyStringPipe.transform(page.Title)]" [routerLinkActive]="['Active']">{{page.Title}}</a>
+        </li>
       </ul>
       <div class="ClearBoth"></div>
     </div>
@@ -93,7 +97,10 @@
 <div id="BottomBar">
   <div class="CenteredContainer">
     <div class="WrapperPadding20-8">
-      Powered by <a href="{{constants.DGB_COMMERCE_URL}}" target="_blank"><img src="/assets/images/BottomBar Logo.png" width="23" height="32" alt="DGB Commerce" /> DGB Commerce</a>
+      Powered by <a class="PoweredBy" href="{{constants.DGB_COMMERCE_URL}}" target="_blank"><img src="/assets/images/BottomBar Logo.png" width="23" height="32" alt="DGB Commerce" /> DGB Commerce</a>
+      <ng-container *ngFor="let page of this.pagesFooter">
+        | <a [routerLink]="['/page/' + page.Id + '/' + this.searchEngineFriendlyStringPipe.transform(page.Title)]" [routerLinkActive]="['Active']">{{page.Title}}</a>
+      </ng-container>
     </div>
   </div>
 </div>
