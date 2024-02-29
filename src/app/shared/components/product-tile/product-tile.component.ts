@@ -1,15 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { DialogAddToCartComponent } from '../../dialogs/add-to-cart/dialog.add-to-cart.component';
 import { Environment } from '../../environments/Environment.prod';
 import { MatDialog } from '@angular/material/dialog';
 import { PublicProduct } from '../../models/viewmodels/PublicProduct.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-tile',
   templateUrl: './product-tile.component.html',
-  styleUrl:'./product-tile.component.scss'
+  styleUrl: './product-tile.component.scss'
 })
 export class ProductTileComponent {
   @Input() merchantId!: string;
@@ -21,7 +20,7 @@ export class ProductTileComponent {
     public dialog: MatDialog
   ) { }
 
-  addToCart(){
+  addToCart() {
     const dialogAddToCart = this.dialog.open(DialogAddToCartComponent);
     const instance = dialogAddToCart.componentInstance;
     instance.product = this.product;

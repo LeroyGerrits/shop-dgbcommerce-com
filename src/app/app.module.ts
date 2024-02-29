@@ -17,6 +17,7 @@ import { DialogAddToCartComponent } from './shared/dialogs/add-to-cart/dialog.ad
 import { DigiByteNodeService } from './shared/services/DigiByteNode.service';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { FileSizePipe } from './shared/pipes/FileSize.pipe';
+import { FormatRichTextPipe } from './shared/pipes/FormatRichText.pipe';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -60,6 +61,7 @@ import { PublicWebsiteComponent } from './public-website/public-website.componen
 import { PublicWebsiteIndexComponent } from './public-website/index/index.component';
 import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-authorized/not-authorized.component';
 import { PublicWebsiteNotFoundComponent } from './public-website/not-found/not-found.component';
+import { PublicWebsitePageComponent } from './public-website/page/page.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { RouterModule } from '@angular/router';
 import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
@@ -74,6 +76,7 @@ import { UtilityService } from './shared/services/Utility.service';
     CategoryBreadcrumbComponent,
     DialogAddToCartComponent,
     FileSizePipe,
+    FormatRichTextPipe,
     MenuItemComponent,
     ProductListComponent,
     ProductTileComponent,
@@ -83,6 +86,7 @@ import { UtilityService } from './shared/services/Utility.service';
     PublicWebsiteIndexComponent,
     PublicWebsiteNotAuthorizedComponent,
     PublicWebsiteNotFoundComponent,
+    PublicWebsitePageComponent,
     SearchEngineFriendlyStringPipe
   ],
   imports: [
@@ -134,6 +138,7 @@ import { UtilityService } from './shared/services/Utility.service';
     DeliveryMethodService,
     DigiByteNodeService,
     FileSizePipe,
+    FormatRichTextPipe,
     MerchantService,
     MerchantPasswordResetLinkService,
     PageService,
