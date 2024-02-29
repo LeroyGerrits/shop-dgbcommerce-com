@@ -25,7 +25,7 @@ export class ProductService {
         return this.http.get<PublicProduct[]>(this.apiUrl, { params: httpParams });
     }
 
-    getById(id: string): Observable<PublicProduct> {
-        return this.http.get<PublicProduct>(`${this.apiUrl}/${id}`);
+    getById(shopId: string, id: string): Observable<PublicProduct> {
+        return this.http.get<PublicProduct>(`${this.apiUrl}/${shopId}/${id}`);
     }
 }
