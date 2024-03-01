@@ -3,7 +3,9 @@ import { Meta, Title } from '@angular/platform-browser';
 
 import { ActivatedRoute } from '@angular/router';
 import { Constants } from 'src/app/shared/Constants';
+import { DialogAddToCartComponent } from 'src/app/shared/dialogs/add-to-cart/dialog.add-to-cart.component';
 import { FormatRichTextPipe } from 'src/app/shared/pipes/FormatRichText.pipe';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from 'src/app/shared/services/Product.service';
 import { PublicProduct } from 'src/app/shared/models/viewmodels/PublicProduct.model';
 import { PublicShop } from 'src/app/shared/models/viewmodels/PublicShop.model';
@@ -21,6 +23,7 @@ export class PublicWebsiteProductComponent implements OnInit {
   public shop: PublicShop | undefined;
 
   constructor(
+    private dialog: MatDialog,
     private formatRichTextPipe: FormatRichTextPipe,
     private route: ActivatedRoute,
     private metaService: Meta,
@@ -31,7 +34,6 @@ export class PublicWebsiteProductComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       let queryStringProductId = params['productId'];
-console.log(this.product);
 
       this.utilityService.activeShop$.subscribe(shop => {
         if (shop.Id) {
@@ -39,16 +41,24 @@ console.log(this.product);
 
           this.productService.getById(shop.Id, queryStringProductId).subscribe(product => {
             this.product = product;
-            console.log(this.product);
-
-            if (this.product) {
-              this.titleService.setTitle(this.product.Name);
-              this.metaService.addTag({ name: 'keywords', content: this.product.Name });
-              this.productFormattedDescription = this.formatRichTextPipe.transform(this.product.Description!);
-            }
+            this.titleService.setTitle(this.product.Name);
+            this.metaService.addTag({ name: 'keywords', content: this.product.Name });
+            this.productFormattedDescription = this.formatRichTextPipe.transform(this.product.Description!);
           });
         }
       });
+    });
+  }
+
+  addToCart() {
+    const dialogAddToCart = this.dialog.open(DialogAddToCartComponent);
+    const instance = dialogAddToCart.componentInstance;
+    instance.product = this.product!;
+
+    dialogAddToCart.afterClosed().subscribe(result => {
+      if (result) {
+        dialogAddToCart.close();
+      }
     });
   }
 }

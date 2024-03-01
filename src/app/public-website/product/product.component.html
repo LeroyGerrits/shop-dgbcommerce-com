@@ -3,9 +3,14 @@
 </div>
 <div class="ColumnOneThird">
     <div class="WrapperPadding20-10-20-8">
-        <a *ngIf="this.product?.MainPhotoId" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{product?.MainPhotoId}}.{{product?.MainPhotoExtension}}" data-lightbox="productPhoto" title="{{product?.Name}}">
-            <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{product?.MainPhotoId}}_thumbnail_400x400.{{product?.MainPhotoExtension}}" width="400" height="400" alt="{{product?.Name}}" />
+        <a *ngIf="this.product?.MainPhotoId" class="MainPhoto" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{this.product?.MainPhotoId}}.{{this.product?.MainPhotoExtension}}" data-lightbox="productPhoto" title="{{this.product?.Name}}">
+            <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{this.product?.MainPhotoId}}_thumbnail_400x400.{{this.product?.MainPhotoExtension}}" width="400" height="400" alt="{{this.product?.Name}}" />
         </a>
+        <ng-container *ngFor="let photo of this.product?.Photos">
+            <a *ngIf="!photo.Main" class="Photo" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{photo.Id}}.{{photo.Extension}}" data-lightbox="productPhoto" title="{{photo.Description}}">
+                <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{photo.Id}}_thumbnail_100x100.{{photo.Extension}}" width="100" height="100" alt="{{photo.Description}}" />
+            </a>
+        </ng-container>        
     </div>
 </div>
 <div class="ColumnOneThird">
@@ -15,7 +20,10 @@
 </div>
 <div class="ColumnOneThird">
     <div class="WrapperPadding20-8-0-10">
-        Add to cart
+        <button mat-raised-button color="primary" (click)="addToCart()">
+            <mat-icon class="Margin0">shopping_cart</mat-icon>
+            Add to cart
+        </button>
     </div>
 </div>
 <div class="ClearLeft"></div>

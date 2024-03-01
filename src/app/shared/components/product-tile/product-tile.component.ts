@@ -17,7 +17,7 @@ export class ProductTileComponent {
   environment = Environment;
 
   constructor(
-    public dialog: MatDialog
+    private dialog: MatDialog
   ) { }
 
   addToCart() {
