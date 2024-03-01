@@ -18,7 +18,7 @@ export class PublicWebsiteProductComponent implements OnInit {
 
   public product: PublicProduct | undefined;
   public productFormattedDescription: string = '';
-public shop: PublicShop | undefined;
+  public shop: PublicShop | undefined;
 
   constructor(
     private formatRichTextPipe: FormatRichTextPipe,
@@ -31,6 +31,7 @@ public shop: PublicShop | undefined;
   ngOnInit() {
     this.route.params.subscribe(params => {
       let queryStringProductId = params['productId'];
+console.log(this.product);
 
       this.utilityService.activeShop$.subscribe(shop => {
         if (shop.Id) {
@@ -38,7 +39,8 @@ public shop: PublicShop | undefined;
 
           this.productService.getById(shop.Id, queryStringProductId).subscribe(product => {
             this.product = product;
-    
+            console.log(this.product);
+
             if (this.product) {
               this.titleService.setTitle(this.product.Name);
               this.metaService.addTag({ name: 'keywords', content: this.product.Name });

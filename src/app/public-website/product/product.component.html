@@ -1,6 +1,21 @@
-<div class="WrapperPadding20-8 BreadCrumb">
+<div class="WrapperPadding20-8-0-8 BreadCrumb">
     <h2>{{this.product?.Name}}</h2>
 </div>
-<div class="WrapperPadding20-8">
-    XXX
+<div class="ColumnOneThird">
+    <div class="WrapperPadding20-10-20-8">
+        <a *ngIf="this.product?.MainPhotoId" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{product?.MainPhotoId}}.{{product?.MainPhotoExtension}}" data-lightbox="productPhoto" title="{{product?.Name}}">
+            <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{product?.MainPhotoId}}_thumbnail_400x400.{{product?.MainPhotoExtension}}" width="400" height="400" alt="{{product?.Name}}" />
+        </a>
+    </div>
 </div>
+<div class="ColumnOneThird">
+    <div class="WrapperPadding20-10">
+        {{this.productFormattedDescription}}
+    </div>
+</div>
+<div class="ColumnOneThird">
+    <div class="WrapperPadding20-8-0-10">
+        Add to cart
+    </div>
+</div>
+<div class="ClearLeft"></div>

@@ -62,6 +62,7 @@ import { PublicWebsiteIndexComponent } from './public-website/index/index.compon
 import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-authorized/not-authorized.component';
 import { PublicWebsiteNotFoundComponent } from './public-website/not-found/not-found.component';
 import { PublicWebsitePageComponent } from './public-website/page/page.component';
+import { PublicWebsiteProductComponent } from './public-website/product/product.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { RouterModule } from '@angular/router';
 import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
@@ -87,6 +88,7 @@ import { UtilityService } from './shared/services/Utility.service';
     PublicWebsiteNotAuthorizedComponent,
     PublicWebsiteNotFoundComponent,
     PublicWebsitePageComponent,
+    PublicWebsiteProductComponent,
     SearchEngineFriendlyStringPipe
   ],
   imports: [

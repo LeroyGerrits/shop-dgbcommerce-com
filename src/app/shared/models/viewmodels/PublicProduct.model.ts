@@ -1,3 +1,5 @@
+import { PublicProductPhoto } from "./PublicProductPhoto.model";
+
 export class PublicProduct {
     Id!: string;
     Name!: string;
@@ -6,4 +8,5 @@ export class PublicProduct {
     Price!: number;
     MainPhotoId?: string;
     MainPhotoExtension?: string;
+    Photos?: PublicProductPhoto[];
 }

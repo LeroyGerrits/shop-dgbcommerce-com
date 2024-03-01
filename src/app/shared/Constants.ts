@@ -1,4 +1,5 @@
 export abstract class Constants {
+    static readonly API_URL: string = 'https://api.dgbcommerce.com';
     static readonly DATE_FORMAT: string = 'dd-MM-yyyy';
     static readonly DATE_TIME_FORMAT: string = 'dd-MM-yyyy HH:mm';
     static readonly DGB_COMMERCE_DOMAIN: string = 'dgbcommerce.com';
