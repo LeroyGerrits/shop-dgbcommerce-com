@@ -21,7 +21,7 @@
 <div class="ColumnOneThird">
     <div class="WrapperPadding20-8-0-10">
         <section>
-            <div class="WrapperPadding20 TextAlignCenter">
+            <div class="WrapperPadding20Fixed TextAlignCenter">
                 <button *ngIf="this.product?.Stock == undefined || (this.product?.Stock && this.product?.Stock! > 0)" mat-raised-button color="primary" (click)="addToCart()">
                     <mat-icon>shopping_cart</mat-icon> Add to cart
                 </button>
