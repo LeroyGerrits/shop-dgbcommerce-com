@@ -224,6 +224,10 @@ header div.TitleAndNavigation ul li a.Active {
     color: rgba(255, 255, 255, 1);
 }
 
+section {
+    background-color: var(--light-gray-color);
+}
+
 p {
     text-align: justify;
     line-height: 1.8em;

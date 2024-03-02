@@ -4,26 +4,35 @@
 <div class="ColumnOneThird">
     <div class="WrapperPadding20-10-20-8">
         <a *ngIf="this.product?.MainPhotoId" class="MainPhoto" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{this.product?.MainPhotoId}}.{{this.product?.MainPhotoExtension}}" data-lightbox="productPhoto" title="{{this.product?.Name}}">
-            <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{this.product?.MainPhotoId}}_thumbnail_400x400.{{this.product?.MainPhotoExtension}}" width="400" height="400" alt="{{this.product?.Name}}" />
+            <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{this.product?.MainPhotoId}}_thumbnail_400x400.{{this.product?.MainPhotoExtension}}" width="400" height="400" class="MainPhoto" alt="{{this.product?.Name}}" />
         </a>
-        <ng-container *ngFor="let photo of this.product?.Photos">
-            <a *ngIf="!photo.Main" class="Photo" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{photo.Id}}.{{photo.Extension}}" data-lightbox="productPhoto" title="{{photo.Description}}">
-                <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{photo.Id}}_thumbnail_100x100.{{photo.Extension}}" width="100" height="100" alt="{{photo.Description}}" />
-            </a>
-        </ng-container>        
+        <div class="Photos">
+            <ng-container *ngFor="let photo of this.product?.Photos">
+                <a *ngIf="!photo.Main" class="Photo" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{photo.Id}}.{{photo.Extension}}" data-lightbox="productPhoto" title="{{photo.Description}}">
+                    <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{photo.Id}}_thumbnail_100x100.{{photo.Extension}}" width="100" height="100" alt="{{photo.Description}}" />
+                </a>
+            </ng-container>
+        </div>
     </div>
 </div>
 <div class="ColumnOneThird">
-    <div class="WrapperPadding20-10">
-        {{this.productFormattedDescription}}
-    </div>
+    <div class="WrapperPadding20-10" [innerHTML]="this.productFormattedDescription"></div>
 </div>
 <div class="ColumnOneThird">
     <div class="WrapperPadding20-8-0-10">
-        <button mat-raised-button color="primary" (click)="addToCart()">
-            <mat-icon class="Margin0">shopping_cart</mat-icon>
-            Add to cart
-        </button>
+        <section>
+            <div class="WrapperPadding20 TextAlignCenter">
+                <button *ngIf="this.product?.Stock == undefined || (this.product?.Stock && this.product?.Stock! > 0)" mat-raised-button color="primary" (click)="addToCart()">
+                    <mat-icon>shopping_cart</mat-icon> Add to cart
+                </button>
+                <button *ngIf="this.product?.Stock != undefined && this.product?.Stock! <= 0" mat-raised-button color="primary" disabled="disabled">
+                    <mat-icon>not_interested</mat-icon> Out of stock
+                </button>
+            </div>
+        </section>
+        <span class="Price">
+            Ɗ {{this.product?.Price | number:'1.0-8'}}
+        </span>
     </div>
 </div>
 <div class="ClearLeft"></div>

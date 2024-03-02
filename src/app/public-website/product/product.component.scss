@@ -1,0 +1,30 @@
+img.MainPhoto {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+div.Photos {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto auto auto;
+    margin-top: 20px;
+}
+
+div.Photos a {
+    display: block;
+}
+
+div.Photos a img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+span.Price {
+    display: block;
+    font-size: 1.2em;
+    line-height: 1.6em;
+    margin-top: 20px;
+    text-align: center;
+}

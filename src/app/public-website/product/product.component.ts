@@ -13,7 +13,8 @@ import { UtilityService } from 'src/app/shared/services/Utility.service';
 
 @Component({
   selector: 'public-website-product',
-  templateUrl: './product.component.html'
+  templateUrl: './product.component.html',
+  styleUrl: './product.component.scss'
 })
 export class PublicWebsiteProductComponent implements OnInit {
   public constants = Constants;
@@ -41,9 +42,9 @@ export class PublicWebsiteProductComponent implements OnInit {
 
           this.productService.getById(shop.Id, queryStringProductId).subscribe(product => {
             this.product = product;
-            this.titleService.setTitle(this.product.Name);
-            this.metaService.addTag({ name: 'keywords', content: this.product.Name });
-            this.productFormattedDescription = this.formatRichTextPipe.transform(this.product.Description!);
+            this.titleService.setTitle(product.Name);
+            this.metaService.addTag({ name: 'keywords', content: product.Name });
+            this.productFormattedDescription = this.formatRichTextPipe.transform(product.Description!);
           });
         }
       });
