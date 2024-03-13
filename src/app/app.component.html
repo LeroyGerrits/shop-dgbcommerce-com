@@ -15,9 +15,9 @@
           <mat-icon>account_box</mat-icon>
           USERNAME
         </button>
-        <button mat-button [routerLink]="['/shopping-cart']">
+        <button mat-button [routerLink]="['/shopping-cart']" *ngIf="this.shoppingCart && this.shoppingCart.CumulativeItems > 0">
           Shopping cart
-          <span class="Amount">12</span>
+          <span class="Amount">{{this.shoppingCart.CumulativeItems}}</span>
         </button>
 
         <mat-menu #Merchant="matMenu">

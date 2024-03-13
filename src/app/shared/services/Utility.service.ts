@@ -3,16 +3,22 @@ import { Injectable } from '@angular/core';
 import { PublicCategory } from '../models/viewmodels/PublicCategory.model';
 import { PublicPage } from '../models/viewmodels/PublicPage.model';
 import { PublicShop } from '../models/viewmodels/PublicShop.model';
+import { ShoppingCart } from '../models/ShoppingCart.model';
+import { ShoppingCartService } from './ShoppingCart.service';
 
 @Injectable()
 export class UtilityService {
     private categories$ = new BehaviorSubject<any>({});
     private pages$ = new BehaviorSubject<any>({});
     private shop$ = new BehaviorSubject<any>({});
+    private shoppingCart$ = new BehaviorSubject<any>({});
 
     public activeCategories$ = this.categories$.asObservable();
     public activePages$ = this.pages$.asObservable();
     public activeShop$ = this.shop$.asObservable();
+    public activeShoppingCart$ = this.shoppingCart$.asObservable();
+
+    constructor(private shoppingCartService: ShoppingCartService) { }
 
     public getCategoryById(id: string): any {
         let foundCategory: any;
@@ -28,6 +34,20 @@ export class UtilityService {
                 foundPage = foundPages[0];
         });
         return foundPage;
+    }
+
+    public updateShoppingCart() {
+        const sessionId = this.shoppingCartService.getSessionId();
+        if (sessionId) {
+            console.log('Retrieving shopping cart');
+            this.shoppingCartService.get().subscribe(shoppingCart => {
+                console.log('shopping cart retrieved');
+                if (shoppingCart) {
+                    console.log('Shopping cart enabled!');
+                    this.shoppingCart$.next(shoppingCart);
+                }
+            });
+        }
     }
 
     public setCategories(categories: PublicCategory[]) {

@@ -7,6 +7,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MutationResult } from '../../models/MutationResult';
 import { PublicProduct } from '../../models/viewmodels/PublicProduct.model';
 import { Router } from '@angular/router';
+import { ShoppingCart } from '../../models/ShoppingCart.model';
+import { ShoppingCartItem } from '../../models/ShoppingCartItem.model';
+import { ShoppingCartService } from '../../services/ShoppingCart.service';
+import { UtilityService } from '../../services/Utility.service';
 
 @Component({
   selector: 'dialog-add-to-cart',
@@ -28,9 +32,10 @@ export class DialogAddToCartComponent implements OnInit {
 
   constructor(
     private dialogRefComponent: MatDialogRef<any>,
-    //private shoppingCartService: ShoppingCartService,
+    private shoppingCartService: ShoppingCartService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private utilityService: UtilityService
   ) {
     this.form = new FormGroup([
       this.controlAmount
@@ -87,30 +92,35 @@ export class DialogAddToCartComponent implements OnInit {
       return;
     }
 
-    /*const shoppingCartItemToCreate: Merchant = {
-        Product: product,
-        Amount: parseInt(this.controlAmount.value!)
-    };
+    this.shoppingCartService.get().subscribe(shoppingCart => {
+      if (!shoppingCart)
+        this.handleError('Shopping cart could not be initialized.');
 
-    this.merchantService.create(merchantToCreate).subscribe({
-        next: result => this.handleOnSubmitResult(result),
-        error: error => this.handleOnSubmitError(error),
+      const shoppingCartItemToCreate = new ShoppingCartItem();
+      shoppingCartItemToCreate.Amount = parseInt(this.controlAmount.value!);
+      shoppingCartItemToCreate.ProductId = this.product.Id;
+      shoppingCartItemToCreate.ShoppingCartId = shoppingCart.Id;
+
+      this.shoppingCartService.addItem(shoppingCartItemToCreate).subscribe({
+        next: result => this.handleSave(result),
+        error: error => this.handleError(error),
         complete: () => this.formLoading = false
-    });*/
+      });
+    });
   }
 
-  handleOnSubmitResult(result: MutationResult) {
+  handleSave(result: MutationResult) {
     if (result.Success) {
       if (this.dialogRefComponent)
         this.dialogRefComponent.close();
 
-      this.router.navigate(['/message/account-registered']);
+      this.utilityService.updateShoppingCart();
     } else {
       this.snackBarRef = this.snackBar.open(result.Message, 'Close', { panelClass: ['error-snackbar'] });
     }
   }
 
-  handleOnSubmitError(error: string) {
+  handleError(error: string) {
     this.snackBarRef = this.snackBar.open(error, 'Close', { panelClass: ['error-snackbar'] });
     this.formLoading = false;
   }

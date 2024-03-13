@@ -11,6 +11,8 @@ import { PublicPage } from './shared/models/viewmodels/PublicPage.model';
 import { PublicShop } from './shared/models/viewmodels/PublicShop.model';
 import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
 import { ShopService } from './shared/services/Shop.service';
+import { ShoppingCart } from './shared/models/ShoppingCart.model';
+import { ShoppingCartService } from './shared/services/ShoppingCart.service';
 import { UtilityService } from './shared/services/Utility.service';
 
 @Component({
@@ -30,6 +32,8 @@ export class AppComponent implements OnInit {
   public pagesTopBar: PublicPage[] = [];
   public snackBarRef: MatSnackBarRef<TextOnlySnackBar> | undefined;
   public shop: PublicShop | undefined;
+  public shoppingCart: ShoppingCart | undefined;
+  public shoppingCartCount = 0;
 
   constructor(
     private dialog: MatDialog,
@@ -49,6 +53,9 @@ export class AppComponent implements OnInit {
       next: shop => this.onRetrieveShop(shop),
       error: () => { }
     });
+
+    this.utilityService.activeShoppingCart$.subscribe(shoppingCart => this.shoppingCart = shoppingCart);
+    this.utilityService.updateShoppingCart();
   }
 
   onRetrieveShop(shop: PublicShop) {

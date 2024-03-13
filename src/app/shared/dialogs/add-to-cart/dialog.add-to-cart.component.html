@@ -1,29 +1,31 @@
 <h2 mat-dialog-title>Add '{{this.product!.Name}}'' to cart</h2>
-<mat-dialog-content class="mat-typography">
+<form (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="mat-typography">
 
-  <mat-form-field>
-    <mat-label>Amount</mat-label>
-    <mat-hint *ngIf="this.product?.Stock">{{this.product.Stock}} left in stock</mat-hint>
-    <button mat-raised-button matPrefix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="minus()">
-      <mat-icon>remove</mat-icon>
+    <mat-form-field>
+      <mat-label>Amount</mat-label>
+      <mat-hint *ngIf="this.product?.Stock">{{this.product.Stock}} left in stock</mat-hint>
+      <button mat-raised-button type="button" matPrefix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="minus()">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <input matInput [formControl]="controlAmount" [ngClass]="{ 'is-invalid': this.formSubmitted && controlAmount.errors }" (keyup)="change()" />
+      <button mat-raised-button type="button" matSuffix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="plus()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <div *ngIf="this.formSubmitted && controlAmount.errors" class="TextError">
+        <div *ngIf="controlAmount.errors['required']">Amount is required</div>
+        <div *ngIf="controlAmount.errors['pattern']">A valid amount is required</div>
+      </div>
+    </mat-form-field>
+
+    <span class="TotalPrice">Ɗ {{totalPrice | number:'1.0-8'}}</span>
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <button mat-raised-button type="button" color="disabled" mat-dialog-close>Cancel</button>
+    <button mat-raised-button type="submit" color="primary" [disabled]="controlAmount.errors" [mat-dialog-close]="true" cdkFocusInitial>
+      <mat-icon>shopping_cart</mat-icon>
+      Add to cart
     </button>
-    <input matInput [formControl]="controlAmount" [ngClass]="{ 'is-invalid': this.formSubmitted && controlAmount.errors }" (keyup)="change()" />
-    <button mat-raised-button matSuffix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="plus()">
-      <mat-icon>add</mat-icon>
-    </button>
-    <div *ngIf="this.formSubmitted && controlAmount.errors" class="TextError">
-      <div *ngIf="controlAmount.errors['required']">Amount is required</div>
-      <div *ngIf="controlAmount.errors['pattern']">A valid amount is required</div>
-    </div>
-  </mat-form-field>
-
-  <span class="TotalPrice">Ɗ {{totalPrice | number:'1.0-8'}}</span>
-
-</mat-dialog-content>
-<mat-dialog-actions align="center">
-  <button mat-raised-button color="disabled" mat-dialog-close>Cancel</button>
-  <button mat-raised-button color="primary" [disabled]="controlAmount.errors" [mat-dialog-close]="true" cdkFocusInitial>
-    <mat-icon>shopping_cart</mat-icon>
-    Add to cart
-  </button>
-</mat-dialog-actions>
+  </mat-dialog-actions>
+</form>

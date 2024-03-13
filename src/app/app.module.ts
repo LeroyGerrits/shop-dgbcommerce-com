@@ -52,7 +52,6 @@ import { MerchantService } from './shared/services/Merchant.service';
 import { NgModule } from '@angular/core';
 import { PageService } from './shared/services/Page.service';
 import { ProductListComponent } from './shared/components/product-list/product-list.component';
-import { ProductPhotoService } from './shared/services/ProductPhoto.service';
 import { ProductService } from './shared/services/Product.service';
 import { ProductTileComponent } from './shared/components/product-tile/product-tile.component';
 import { PublicWebsiteAboutComponent } from './public-website/about/about.component';
@@ -66,8 +65,8 @@ import { PublicWebsiteProductComponent } from './public-website/product/product.
 import { QRCodeModule } from 'angularx-qrcode';
 import { RouterModule } from '@angular/router';
 import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
-import { ShopCategoryService } from './shared/services/ShopCategory.service';
 import { ShopService } from './shared/services/Shop.service';
+import { ShoppingCartService } from './shared/services/ShoppingCart.service';
 import { StripHtmlPipe } from './shared/pipes/StripHtml.pipe';
 import { UtilityService } from './shared/services/Utility.service';
 
@@ -145,10 +144,9 @@ import { UtilityService } from './shared/services/Utility.service';
     MerchantPasswordResetLinkService,
     PageService,
     ProductService,
-    ProductPhotoService,
     SearchEngineFriendlyStringPipe,
     ShopService,
-    ShopCategoryService,
+    ShoppingCartService,
     StripHtmlPipe,
     UtilityService
   ],
