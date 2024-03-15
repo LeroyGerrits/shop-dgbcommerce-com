@@ -3,9 +3,10 @@
 </div>
 <div class="ColumnOneThird">
     <div class="WrapperPadding20-10-20-8">
-        <a *ngIf="this.product?.MainPhotoId" class="MainPhoto" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{this.product?.MainPhotoId}}.{{this.product?.MainPhotoExtension}}" data-lightbox="productPhoto" title="{{this.product?.Name}}">
+        <a *ngIf="this.product?.MainPhotoId" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{this.product?.MainPhotoId}}.{{this.product?.MainPhotoExtension}}" data-lightbox="productPhoto" title="{{this.product?.Name}}">
             <img src="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{this.product?.MainPhotoId}}_thumbnail_400x400.{{this.product?.MainPhotoExtension}}" width="400" height="400" class="MainPhoto" alt="{{this.product?.Name}}" />
         </a>
+        <img *ngIf="!this.product?.MainPhotoId" src="/assets/images/NoProduct.png" width="400" height="400" alt="{{this.product?.Name}}" />
         <div class="Photos">
             <ng-container *ngFor="let photo of this.product?.Photos">
                 <a *ngIf="!photo.Main" class="Photo" href="{{constants.API_URL}}/Resources/{{this.shop?.MerchantId}}/ProductPhoto/{{photo.Id}}.{{photo.Extension}}" data-lightbox="productPhoto" title="{{photo.Description}}">

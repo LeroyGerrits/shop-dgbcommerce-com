@@ -7,7 +7,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MutationResult } from '../../models/MutationResult';
 import { PublicProduct } from '../../models/viewmodels/PublicProduct.model';
 import { Router } from '@angular/router';
-import { ShoppingCart } from '../../models/ShoppingCart.model';
 import { ShoppingCartItem } from '../../models/ShoppingCartItem.model';
 import { ShoppingCartService } from '../../services/ShoppingCart.service';
 import { UtilityService } from '../../services/Utility.service';
@@ -19,6 +18,7 @@ import { UtilityService } from '../../services/Utility.service';
 })
 export class DialogAddToCartComponent implements OnInit {
   @Input() product!: PublicProduct;
+  constants = Constants;
 
   public controlAmount = new FormControl('1', [Validators.required, Validators.pattern(Constants.REGEX_PATTERN_NUMBER)]);
 

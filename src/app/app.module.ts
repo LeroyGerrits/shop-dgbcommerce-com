@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CategoryBreadcrumbComponent } from './shared/components/category-breadcrumb/category-breadcrumb.component';
 import { CategoryService } from './shared/services/Category.service';
+import { CookieService } from 'ngx-cookie-service';
 import { CountryService } from './shared/services/Country.service';
 import { CurrencyService } from './shared/services/Currency.service';
 import { CustomerService } from './shared/services/Customer.service';
@@ -62,6 +63,7 @@ import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-author
 import { PublicWebsiteNotFoundComponent } from './public-website/not-found/not-found.component';
 import { PublicWebsitePageComponent } from './public-website/page/page.component';
 import { PublicWebsiteProductComponent } from './public-website/product/product.component';
+import { PublicWebsiteShoppingCartComponent } from './public-website/shopping-cart/shopping-cart.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { RouterModule } from '@angular/router';
 import { SearchEngineFriendlyStringPipe } from './shared/pipes/SearchEngineFriendlyString.pipe';
@@ -88,6 +90,7 @@ import { UtilityService } from './shared/services/Utility.service';
     PublicWebsiteNotFoundComponent,
     PublicWebsitePageComponent,
     PublicWebsiteProductComponent,
+    PublicWebsiteShoppingCartComponent,
     SearchEngineFriendlyStringPipe
   ],
   imports: [
@@ -133,6 +136,7 @@ import { UtilityService } from './shared/services/Utility.service';
     AuthenticationService,
     CategoryService,
     CountryService,
+    CookieService,
     CurrencyService,
     CustomerService,
     DatePipe,

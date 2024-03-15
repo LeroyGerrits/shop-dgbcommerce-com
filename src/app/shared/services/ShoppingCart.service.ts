@@ -33,7 +33,7 @@ export class ShoppingCartService {
     }
 
     clearSessionId(): void {
-        this.cookieService.delete('sessionId');
+        this.cookieService.delete('sessionId', '/');
     }
 
     getSessionId(): string {
@@ -45,7 +45,7 @@ export class ShoppingCartService {
 
         if (!sessionId) {
             const newSessionId = crypto.randomUUID();
-            this.cookieService.set('sessionId', newSessionId);
+            this.cookieService.set('sessionId', newSessionId, { path: '/' });
             sessionId = newSessionId;
         }
 

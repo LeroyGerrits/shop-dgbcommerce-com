@@ -10,6 +10,7 @@ import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-author
 import { PublicWebsiteNotFoundComponent } from './public-website/not-found/not-found.component';
 import { PublicWebsitePageComponent } from './public-website/page/page.component';
 import { PublicWebsiteProductComponent } from './public-website/product/product.component';
+import { PublicWebsiteShoppingCartComponent } from './public-website/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'product', component: PublicWebsiteProductComponent, title: `${Constants.TITLE_PREFIX} - Product` },
       { path: 'product/:productId', component: PublicWebsiteProductComponent, title: `${Constants.TITLE_PREFIX} - Product` },
       { path: 'product/:productId/:productName', component: PublicWebsiteProductComponent, title: `${Constants.TITLE_PREFIX} - Product` },
+      { path: 'shopping-cart', component: PublicWebsiteShoppingCartComponent, title: `${Constants.TITLE_PREFIX} - Shopping cart` },
       { path: 'not-authorized', component: PublicWebsiteNotAuthorizedComponent, title: `${Constants.TITLE_PREFIX} - Not authorized` },
       { path: '**', pathMatch: 'full', component: PublicWebsiteNotFoundComponent, title: `${Constants.TITLE_PREFIX} - Not found` }
     ]
