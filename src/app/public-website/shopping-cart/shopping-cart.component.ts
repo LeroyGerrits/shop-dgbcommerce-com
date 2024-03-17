@@ -67,12 +67,6 @@ export class PublicWebsiteShoppingCartComponent implements OnInit {
     const dialogShoppingCartItem = this.dialog.open(PublicWebsiteDialogShoppingCartItemComponent);
     const instance = dialogShoppingCartItem.componentInstance;
     instance.shoppingCartItem = element;
-
-    dialogShoppingCartItem.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('joepie');
-      }
-    });
   }
 
   deleteElement(element: ShoppingCartItem) {

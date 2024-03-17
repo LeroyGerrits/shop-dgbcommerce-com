@@ -25,7 +25,7 @@ export class ShoppingCartService {
     }
 
     updateItem(shoppingCartItem: ShoppingCartItem): Observable<MutationResult> {
-        return this.http.put<MutationResult>(`${this.apiUrl}/${shoppingCartItem.Id}`, shoppingCartItem)
+        return this.http.put<MutationResult>(`${this.apiUrl}/EditItem/${shoppingCartItem.Id}`, shoppingCartItem)
     }
 
     deleteItem(id: string): Observable<MutationResult> {

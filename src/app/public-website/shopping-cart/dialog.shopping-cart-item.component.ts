@@ -92,18 +92,13 @@ export class PublicWebsiteDialogShoppingCartItemComponent implements OnInit {
       return;
     }
 
-    this.shoppingCartService.get().subscribe(shoppingCart => {
-      if (!shoppingCart)
-        this.handleError('Shopping cart could not be initialized.');
+    const shoppingCartItemToUpdate = Object.assign({}, this.shoppingCartItem)
+    shoppingCartItemToUpdate.Amount = parseInt(this.controlAmount.value!);
 
-      const shoppingCartItemToUpdate = Object.assign({}, this.shoppingCartItem)
-      shoppingCartItemToUpdate.Amount = parseInt(this.controlAmount.value!);
-
-      this.shoppingCartService.updateItem(shoppingCartItemToUpdate).subscribe({
-        next: result => this.handleSave(result),
-        error: error => this.handleError(error),
-        complete: () => this.formLoading = false
-      });
+    this.shoppingCartService.updateItem(shoppingCartItemToUpdate).subscribe({
+      next: result => this.handleSave(result),
+      error: error => this.handleError(error),
+      complete: () => this.formLoading = false
     });
   }
 
