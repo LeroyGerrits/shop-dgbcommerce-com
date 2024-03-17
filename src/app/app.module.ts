@@ -60,6 +60,7 @@ import { PublicWebsiteAboutComponent } from './public-website/about/about.compon
 import { PublicWebsiteCategoryComponent } from './public-website/category/category.component';
 import { PublicWebsiteCheckoutComponent } from './public-website/checkout/checkout.component';
 import { PublicWebsiteComponent } from './public-website/public-website.component';
+import { PublicWebsiteDialogShoppingCartItemComponent } from './public-website/shopping-cart/dialog.shopping-cart-item.component';
 import { PublicWebsiteIndexComponent } from './public-website/index/index.component';
 import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-authorized/not-authorized.component';
 import { PublicWebsiteNotFoundComponent } from './public-website/not-found/not-found.component';
@@ -89,6 +90,7 @@ import { UtilityService } from './shared/services/Utility.service';
     PublicWebsiteAboutComponent,
     PublicWebsiteCategoryComponent,
     PublicWebsiteCheckoutComponent,
+    PublicWebsiteDialogShoppingCartItemComponent,
     PublicWebsiteIndexComponent,
     PublicWebsiteNotAuthorizedComponent,
     PublicWebsiteNotFoundComponent,

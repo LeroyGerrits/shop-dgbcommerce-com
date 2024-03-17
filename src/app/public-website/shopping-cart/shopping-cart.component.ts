@@ -12,6 +12,7 @@ import { ShoppingCartItem } from 'src/app/shared/models/ShoppingCartItem.model';
 import { PublicShop } from 'src/app/shared/models/viewmodels/PublicShop.model';
 import { ShoppingCartService } from 'src/app/shared/services/ShoppingCart.service';
 import { UtilityService } from 'src/app/shared/services/Utility.service';
+import { PublicWebsiteDialogShoppingCartItemComponent } from './dialog.shopping-cart-item.component';
 
 @Component({
   selector: 'public-website-shopping-cart',
@@ -60,6 +61,18 @@ export class PublicWebsiteShoppingCartComponent implements OnInit {
     } else {
       this.sortDirection = null;
     }
+  }
+
+  editElement(element: ShoppingCartItem) {
+    const dialogShoppingCartItem = this.dialog.open(PublicWebsiteDialogShoppingCartItemComponent);
+    const instance = dialogShoppingCartItem.componentInstance;
+    instance.shoppingCartItem = element;
+
+    dialogShoppingCartItem.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('joepie');
+      }
+    });
   }
 
   deleteElement(element: ShoppingCartItem) {

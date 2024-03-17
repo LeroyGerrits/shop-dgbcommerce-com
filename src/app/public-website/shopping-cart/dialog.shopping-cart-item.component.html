@@ -1,10 +1,10 @@
-<h2 mat-dialog-title>Add '{{this.product!.Name}}' to cart</h2>
+<h2 mat-dialog-title>Edit '{{this.shoppingCartItem.ProductName}}'</h2>
 <form (ngSubmit)="onSubmit()">
   <mat-dialog-content class="mat-typography">
 
     <mat-form-field>
       <mat-label>Amount</mat-label>
-      <mat-hint *ngIf="this.product?.Stock">{{this.product.Stock}} left in stock</mat-hint>
+      <mat-hint *ngIf="this.shoppingCartItem.ProductStock">{{this.shoppingCartItem.ProductStock}} left in stock</mat-hint>
       <button mat-raised-button type="button" matPrefix color="primary" class="PlusMinusButton" [disabled]="controlAmount.errors" (click)="minus()">
         <mat-icon>remove</mat-icon>
       </button>
@@ -24,8 +24,7 @@
   <mat-dialog-actions align="center">
     <button mat-raised-button type="button" color="disabled" mat-dialog-close>Cancel</button>
     <button mat-raised-button type="submit" color="primary" [disabled]="controlAmount.errors" [mat-dialog-close]="true" cdkFocusInitial>
-      <mat-icon>shopping_cart</mat-icon>
-      Add to cart
+      Update
     </button>
   </mat-dialog-actions>
 </form>

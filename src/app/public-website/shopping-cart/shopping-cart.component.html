@@ -54,7 +54,7 @@
                     <mat-icon color="primary">more_horiz</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item color="primary">
+                    <button mat-menu-item color="primary" (click)="editElement(element)">
                         <mat-icon color="primary">edit</mat-icon> <span>Edit</span>
                     </button>
                     <button mat-menu-item color="warn" (click)="deleteElement(element)">
@@ -64,7 +64,7 @@
             </td>
             <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
-        
+
         <tr mat-header-row *matHeaderRowDef="this.displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: this.displayedColumns;"></tr>
         <tr class="mat-row" *matNoDataRow>
@@ -72,7 +72,7 @@
                 Your shopping cart is empty.
             </td>
         </tr>
-        <tr mat-footer-row *matFooterRowDef="this.displayedColumns" [hidden]="!this.shoppingCart || this.shoppingCart.CumulativeAmount == 0"></tr>        
+        <tr mat-footer-row *matFooterRowDef="this.displayedColumns" [hidden]="!this.shoppingCart || !this.shoppingCart.CumulativeAmount || this.shoppingCart.CumulativeAmount == 0"></tr>
     </table>
 
 </div>
