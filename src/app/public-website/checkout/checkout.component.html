@@ -1,6 +1,68 @@
-<div class="WrapperPadding20-8">    
+<div class="WrapperPadding20-8">
     <h2>Checkout</h2>
 </div>
-<div class="WrapperPadding20-8 ClearLeft">
-    bla
+
+<div class="ColumnOneHalf">
+    <div class="WrapperPadding20-10-0-8">
+        <mat-form-field>
+            <mat-label>E-mail address</mat-label>
+            <input matInput [formControl]="controlEmailAddress" maxlength="255" [ngClass]="{ 'is-invalid': formSubmitted && controlEmailAddress.errors }" />
+            <div *ngIf="formSubmitted && controlEmailAddress.errors" class="TextError">
+                <div *ngIf="controlEmailAddress.errors['required']">E-mail address is required</div>
+                <div *ngIf="controlEmailAddress.errors['email']">A valid e-mail address is required</div>
+            </div>
+        </mat-form-field>
+    </div>
 </div>
+<div class="ColumnOneHalf">
+    <div class="WrapperPadding20-10-0-8">
+        <p>Your e-mail address. Will be used for all forms of communication.</p>
+    </div>
+</div>
+<mat-divider class="ClearLeft" />
+<div class="ColumnOneHalf">
+    <div class="WrapperPadding20-10-0-8 TextAlignRight">
+        <mat-radio-group aria-labelledby="gender" [formControl]="controlGender">
+            <mat-radio-button value="1" color="primary">Male</mat-radio-button>
+            <mat-radio-button value="2" color="primary">Female</mat-radio-button>
+            <mat-radio-button value="0" color="primary">Unspecified</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<div class="ColumnOneHalf">
+    <div class="WrapperPadding20-10-0-8">
+        <p>The gender of the customer. Will be used to determine the salutation used in various places in your shop and e-mails.</p>
+    </div>
+</div>
+<mat-divider class="ClearLeft" />
+<div class="ColumnOneHalf">
+    <div class="WrapperPadding20-10-0-8">
+        <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input matInput [formControl]="controlFirstName" maxlength="255" [ngClass]="{ 'is-invalid': formSubmitted && controlFirstName.errors }" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="ColumnOneHalf">
+    <div class="WrapperPadding20-10-0-8">
+        <p>Your first name.</p>
+    </div>
+</div>
+<mat-divider class="ClearLeft" />
+<div class="ColumnOneHalf">
+    <div class="WrapperPadding20-10-0-8">
+        <mat-form-field>
+            <mat-label>Last name</mat-label>
+            <input matInput [formControl]="controlLastName" maxlength="50" [ngClass]="{ 'is-invalid': formSubmitted && controlLastName.errors }" />
+            <div *ngIf="formSubmitted && controlLastName.errors" class="TextError">
+                <div *ngIf="controlLastName.errors['required']">Last name is required</div>
+            </div>
+        </mat-form-field>
+    </div>
+</div>
+<div class="ColumnOneHalf">
+    <div class="WrapperPadding20-10-0-8">
+        <p>Your last name.</p>
+    </div>
+</div>
+<div class="ClearLeft"></div>

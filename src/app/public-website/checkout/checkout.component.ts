@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { MatSort, Sort } from '@angular/material/sort';
 
@@ -28,11 +29,41 @@ export class PublicWebsiteCheckoutComponent implements OnInit {
   constants = Constants;
   public snackBarRef: MatSnackBarRef<TextOnlySnackBar> | undefined;
 
+  public form!: FormGroup;
+  public formLoading = false;
+  public formSubmitted = false;
+
+  public controlEmailAddress = new FormControl('', [Validators.required, Validators.email]);
+  public controlUsername = new FormControl('', Validators.required);
+  public controlGender = new FormControl('0', Validators.required);
+  public controlFirstName = new FormControl('');
+  public controlLastName = new FormControl('', Validators.required);
+  public controlAddressLine1 = new FormControl('', Validators.required);
+  public controlAddressLine2 = new FormControl('');
+  public controlPostalCode = new FormControl('', Validators.required);
+  public controlCity = new FormControl('', Validators.required);
+  public controlProvince = new FormControl('');
+  public controlCountry = new FormControl('', Validators.required);
+
   constructor(
     private snackBar: MatSnackBar,
     private router: Router,
     private utilityService: UtilityService
-  ) { }
+  ) {
+    this.form = new FormGroup([
+      this.controlEmailAddress,
+      this.controlUsername,
+      this.controlGender,
+      this.controlFirstName,
+      this.controlLastName,
+      this.controlAddressLine1,
+      this.controlAddressLine2,
+      this.controlPostalCode,
+      this.controlCity,
+      this.controlProvince,
+      this.controlCountry
+    ]);    
+   }
 
   ngOnInit() {
     this.utilityService.activeShop$.subscribe(shop => this.shop = shop);
