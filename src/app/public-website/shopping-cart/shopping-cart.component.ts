@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { Constants } from 'src/app/shared/Constants';
-import { Currency } from 'src/app/shared/models/Currency.model';
+import { DialogDeleteComponent } from 'src/app/shared/dialogs/delete/dialog.delete.component';
+import { MutationResult } from 'src/app/shared/models/MutationResult';
 import { ShoppingCart } from 'src/app/shared/models/ShoppingCart.model';
 import { ShoppingCartItem } from 'src/app/shared/models/ShoppingCartItem.model';
 import { PublicShop } from 'src/app/shared/models/viewmodels/PublicShop.model';
@@ -26,13 +27,16 @@ export class PublicWebsiteShoppingCartComponent implements OnInit {
   public shoppingCart: ShoppingCart | undefined;
 
   constants = Constants;
+  public snackBarRef: MatSnackBarRef<TextOnlySnackBar> | undefined;
 
   dataSource = new MatTableDataSource<ShoppingCartItem>;
   displayedColumns: string[] = ['ProductMainPhoto', 'ProductName', 'Amount', 'ProductPrice', 'Total', 'ActionButtons'];
   sortDirection: string | null = 'asc';
 
   constructor(
+    private dialog: MatDialog,
     private shoppingCartService: ShoppingCartService,
+    private snackBar: MatSnackBar,
     private utilityService: UtilityService
   ) { }
 
@@ -56,5 +60,33 @@ export class PublicWebsiteShoppingCartComponent implements OnInit {
     } else {
       this.sortDirection = null;
     }
+  }
+
+  deleteElement(element: ShoppingCartItem) {
+    const dialogDelete = this.dialog.open(DialogDeleteComponent);
+    const instance = dialogDelete.componentInstance;
+    instance.dialogMessage = `Are you sure you want to remove '${element.ProductName}' from your shopping cart'?`;
+
+    dialogDelete.afterClosed().subscribe(result => {
+      if (result) {
+        this.shoppingCartService.deleteItem(element.Id!).subscribe({
+          next: result => this.handleOnSubmitResult(result),
+          error: error => this.handleOnSubmitError(error),
+          complete: () => dialogDelete.close()
+        });
+      }
+    });
+  }
+
+  handleOnSubmitResult(result: MutationResult) {
+    if (result.Success) {
+      this.utilityService.updateShoppingCart();
+    } else {
+      this.snackBarRef = this.snackBar.open(result.Message, 'Close', { panelClass: ['error-snackbar'] });
+    }
+  }
+
+  handleOnSubmitError(error: string) {
+    this.snackBarRef = this.snackBar.open(error, 'Close', { panelClass: ['error-snackbar'] });
   }
 }

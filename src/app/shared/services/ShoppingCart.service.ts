@@ -29,7 +29,7 @@ export class ShoppingCartService {
     }
 
     deleteItem(id: string): Observable<MutationResult> {
-        return this.http.delete<MutationResult>(`${this.apiUrl}/DeleteItem/${id}`);
+        return this.http.delete<MutationResult>(`${this.apiUrl}/DeleteItem/${this.getSessionId()}/${id}`);
     }
 
     clearSessionId(): void {

@@ -57,6 +57,7 @@
     --lighter-blue-color: #3090f0;
     --lightest-blue-color: #3f9fff;
     --light-gray-color: #404040;
+    --light-green-color: #75f575;
     --error-color: #dc3545;
     --table-header-background-color: #303030;
     --table-row-background-color: #404040;
@@ -547,6 +548,10 @@ td.NoDataCell {
     font-size: 0.8em;
 }
 
+.FontWeightBold {
+    font-weight: bold;
+}
+
 .PaddingLeft40 {
     padding-left: 40px;
 }
@@ -647,6 +652,12 @@ td.NoDataCell {
         --mat-snack-bar-button-color: #fff;
         --mdc-snackbar-container-color: #222;
         --mdc-snackbar-supporting-text-color: #dc3545 !important;
+    }
+
+    &.info-snackbar {
+        --mat-snack-bar-button-color: #fff;
+        --mdc-snackbar-container-color: #222;
+        --mdc-snackbar-supporting-text-color: var(--light-green-color) !important;
     }
 }
 

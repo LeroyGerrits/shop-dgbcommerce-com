@@ -15,6 +15,7 @@ import { CustomerService } from './shared/services/Customer.service';
 import { DatePipe } from '@angular/common';
 import { DeliveryMethodService } from './shared/services/DeliveryMethod.service';
 import { DialogAddToCartComponent } from './shared/dialogs/add-to-cart/dialog.add-to-cart.component';
+import { DialogDeleteComponent } from './shared/dialogs/delete/dialog.delete.component';
 import { DigiByteNodeService } from './shared/services/DigiByteNode.service';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { FileSizePipe } from './shared/pipes/FileSize.pipe';
@@ -77,6 +78,7 @@ import { UtilityService } from './shared/services/Utility.service';
     AppComponent,
     CategoryBreadcrumbComponent,
     DialogAddToCartComponent,
+    DialogDeleteComponent,
     FileSizePipe,
     FormatRichTextPipe,
     MenuItemComponent,

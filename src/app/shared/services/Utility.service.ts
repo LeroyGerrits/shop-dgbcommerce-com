@@ -39,11 +39,8 @@ export class UtilityService {
     public updateShoppingCart() {
         const sessionId = this.shoppingCartService.getSessionId();
         if (sessionId) {
-            console.log('Retrieving shopping cart');
             this.shoppingCartService.get().subscribe(shoppingCart => {
-                console.log('shopping cart retrieved');
                 if (shoppingCart) {
-                    console.log('Shopping cart enabled!');
                     this.shoppingCart$.next(shoppingCart);
                 }
             });

@@ -115,6 +115,7 @@ export class DialogAddToCartComponent implements OnInit {
         this.dialogRefComponent.close();
 
       this.utilityService.updateShoppingCart();
+      this.snackBar.open(`${this.product.Name} was added to your shopping cart`, 'OK', { panelClass: 'info-snackbar', duration: 5000 });
     } else {
       this.snackBarRef = this.snackBar.open(result.Message, 'Close', { panelClass: ['error-snackbar'] });
     }

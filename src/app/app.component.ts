@@ -54,8 +54,6 @@ export class AppComponent implements OnInit {
       error: () => { }
     });
 
-    console.log('App Component Init');
-    
     this.utilityService.activeShoppingCart$.subscribe(shoppingCart => this.shoppingCart = shoppingCart);
     this.utilityService.updateShoppingCart();
   }

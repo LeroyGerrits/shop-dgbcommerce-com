@@ -7,5 +7,6 @@ export class ShoppingCart {
     Created?: Date;
     Edited?: Date;
     Items?: ShoppingCartItem[]
-    CumulativeItems!: number;
+    CumulativeAmount!: number;
+    CumulativeTotal!: number;    
 }
