@@ -47,7 +47,7 @@ export class PublicWebsiteShoppingCartComponent implements OnInit {
 
   retrieveShoppingCartItems() {
     this.utilityService.activeShoppingCart$.subscribe(shoppingCart => {
-      this.shoppingCart = shoppingCart
+      this.shoppingCart = shoppingCart;
       this.dataSource = new MatTableDataSource(shoppingCart.Items);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

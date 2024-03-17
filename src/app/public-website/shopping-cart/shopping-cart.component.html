@@ -1,6 +1,6 @@
 <div class="WrapperPadding20-8">
     <div class="FloatRight">
-        <button mat-raised-button color="primary" *ngIf="this.shoppingCart && this.shoppingCart.CumulativeAmount > 0">
+        <button mat-raised-button color="primary" *ngIf="this.shoppingCart && this.shoppingCart.CumulativeAmount > 0" [routerLink]="['/checkout']">
             <mat-icon>shopping_cart_checkout</mat-icon>
             Proceed to checkout
         </button>

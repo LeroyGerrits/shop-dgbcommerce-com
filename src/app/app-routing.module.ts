@@ -4,6 +4,7 @@ import { Constants } from './shared/Constants';
 import { NgModule } from '@angular/core';
 import { PublicWebsiteAboutComponent } from './public-website/about/about.component';
 import { PublicWebsiteCategoryComponent } from './public-website/category/category.component';
+import { PublicWebsiteCheckoutComponent } from './public-website/checkout/checkout.component';
 import { PublicWebsiteComponent } from './public-website/public-website.component';
 import { PublicWebsiteIndexComponent } from './public-website/index/index.component';
 import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-authorized/not-authorized.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'category', component: PublicWebsiteCategoryComponent, title: `${Constants.TITLE_PREFIX} - Category` },
       { path: 'category/:categoryId', component: PublicWebsiteCategoryComponent, title: `${Constants.TITLE_PREFIX} - Category` },
       { path: 'category/:categoryId/:categoryName', component: PublicWebsiteCategoryComponent, title: `${Constants.TITLE_PREFIX} - Category` },
+      { path: 'checkout', component: PublicWebsiteCheckoutComponent, title: `${Constants.TITLE_PREFIX} - Checkout` },
       { path: 'page', component: PublicWebsitePageComponent, title: `${Constants.TITLE_PREFIX} - Page` },
       { path: 'page/:pageId', component: PublicWebsitePageComponent, title: `${Constants.TITLE_PREFIX} - Page` },
       { path: 'page/:pageId/:pageTitle', component: PublicWebsitePageComponent, title: `${Constants.TITLE_PREFIX} - Page` },

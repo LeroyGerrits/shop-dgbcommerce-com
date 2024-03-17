@@ -58,6 +58,7 @@ import { ProductService } from './shared/services/Product.service';
 import { ProductTileComponent } from './shared/components/product-tile/product-tile.component';
 import { PublicWebsiteAboutComponent } from './public-website/about/about.component';
 import { PublicWebsiteCategoryComponent } from './public-website/category/category.component';
+import { PublicWebsiteCheckoutComponent } from './public-website/checkout/checkout.component';
 import { PublicWebsiteComponent } from './public-website/public-website.component';
 import { PublicWebsiteIndexComponent } from './public-website/index/index.component';
 import { PublicWebsiteNotAuthorizedComponent } from './public-website/not-authorized/not-authorized.component';
@@ -87,6 +88,7 @@ import { UtilityService } from './shared/services/Utility.service';
     PublicWebsiteComponent,
     PublicWebsiteAboutComponent,
     PublicWebsiteCategoryComponent,
+    PublicWebsiteCheckoutComponent,
     PublicWebsiteIndexComponent,
     PublicWebsiteNotAuthorizedComponent,
     PublicWebsiteNotFoundComponent,
